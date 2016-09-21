@@ -32,7 +32,7 @@
         },
         {
             "location": "/info/infopage1/",
-            "text": "First Info page\n\n\nTODOS\n\n\n\n\n[ ] Damn!",
+            "text": "First Info page\n\n\nTODOS\n\n\n\n\n Damn!",
             "title": "Info Page 1"
         },
         {
@@ -42,7 +42,7 @@
         },
         {
             "location": "/info/infopage1/#todos",
-            "text": "[ ] Damn!",
+            "text": "Damn!",
             "title": "TODOS"
         },
         {
