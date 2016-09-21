@@ -1,1 +1,11 @@
-site_name: My Docs
+site_name: FalloutX Info
+
+pages:
+- Home: index.md
+- About: about.md
+- Info:
+  - 'Info Index': info/index.md
+  - 'Info Page 1': info/infopage1.md
+- __Internal: internal.md
+
+theme_dir: journal_theme
