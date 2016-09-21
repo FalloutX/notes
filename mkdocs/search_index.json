@@ -2,23 +2,58 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "text": "Welcome to FalloutX.\n\n\n\n\nThese are my docs.",
             "title": "Home"
         },
         {
-            "location": "/#welcome-to-mkdocs",
-            "text": "For full documentation visit  mkdocs.org .",
-            "title": "Welcome to MkDocs"
+            "location": "/#welcome-to-falloutx",
+            "text": "These are my docs.",
+            "title": "Welcome to FalloutX."
         },
         {
-            "location": "/#commands",
-            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
-            "title": "Commands"
+            "location": "/about/",
+            "text": "About",
+            "title": "About"
         },
         {
-            "location": "/#project-layout",
-            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
-            "title": "Project layout"
+            "location": "/about/#about",
+            "text": "",
+            "title": "About"
+        },
+        {
+            "location": "/info/",
+            "text": "Info Repo",
+            "title": "Info Index"
+        },
+        {
+            "location": "/info/#info-repo",
+            "text": "",
+            "title": "Info Repo"
+        },
+        {
+            "location": "/info/infopage1/",
+            "text": "First Info page\n\n\nTODOS\n\n\n\n\n[ ] Damn!",
+            "title": "Info Page 1"
+        },
+        {
+            "location": "/info/infopage1/#first-info-page",
+            "text": "",
+            "title": "First Info page"
+        },
+        {
+            "location": "/info/infopage1/#todos",
+            "text": "[ ] Damn!",
+            "title": "TODOS"
+        },
+        {
+            "location": "/internal/",
+            "text": "Internal API",
+            "title": "__Internal"
+        },
+        {
+            "location": "/internal/#internal-api",
+            "text": "",
+            "title": "Internal API"
         }
     ]
 }
