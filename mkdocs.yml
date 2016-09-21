@@ -11,3 +11,4 @@ pages:
 theme_dir: journal_theme
 markdown_extensions:
   - pymdownx.tasklist
+  - pymdownx.githubemoji
