@@ -9,3 +9,5 @@ pages:
 - __Internal: internal.md
 
 theme_dir: journal_theme
+markdown_extensions:
+  - pymdownx.tasklist
