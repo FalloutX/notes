@@ -12,3 +12,8 @@ theme_dir: journal_theme
 markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.githubemoji
+  - pymdownx.superfences
+  - pymdownx.betterem
+  - pymdownx.tilde
+  - pymdownx.magiclink
+  - pymdownx.headeranchor
