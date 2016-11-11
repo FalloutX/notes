@@ -48,12 +48,27 @@
         {
             "location": "/internal/",
             "text": "Internal API",
-            "title": "__Internal"
+            "title": "Internal Index"
         },
         {
             "location": "/internal/#internal-api",
             "text": "",
             "title": "Internal API"
+        },
+        {
+            "location": "/react/1_Index/",
+            "text": "React Notes.\n\n\n\n\nThese are my notes from Brain Holt's React Course @ Frontend Masters.\n\n\n\n\n\n\nMain URL\n - All the notes & stuff.\n\n\nGithub\n - Code for the Course.",
+            "title": "React Notes Index"
+        },
+        {
+            "location": "/react/1_Index/#react-notes",
+            "text": "These are my notes from Brain Holt's React Course @ Frontend Masters.    Main URL  - All the notes & stuff.  Github  - Code for the Course.",
+            "title": "React Notes."
+        },
+        {
+            "location": "/react/2_Introduction/",
+            "text": "",
+            "title": "React Notes Page 1"
         }
     ]
 }
