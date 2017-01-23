@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+	<title>Ruby Notes P4 - Ruby Monk Primer Ascent - FalloutX Notes</title>
+
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link href="../../../app.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">FalloutX Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+              
+                
+                    <li  >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+              
+            
+              
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../elixir_getting_started/">Elixir Getting Started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../pwa_notes/">Progressive Web Apps</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../datavis_notes/">Data Visualization</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../redux_notes/">Redux</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../ruby_part_1_codeacademy/">Ruby Notes P1 - CodeAcademy</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ruby_part_2_explanations/">Ruby Notes P2 - Explantions</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ruby_part_3_ruby_monk_intro/">Ruby Notes P3 - Ruby Monk</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Ruby Notes P4 - Ruby Monk Primer Ascent</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+              
+            
+              
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../resources/learning_ruby/">Learning Ruby</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../resources/general_dev_resources/">General Dev Resources</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+              
+            
+              
+            
+              
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../ruby_part_3_ruby_monk_intro/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../../../resources/learning_ruby/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#ruby-monk-notes-on-ruby-primer-ascent">Ruby Monk Notes on Ruby Primer - Ascent</a></li>
+        
+            <li><a href="#01-blocks">0.1 Blocks</a></li>
+        
+            <li><a href="#02-implicit-and-explicit-blocks">0.2 Implicit and Explicit Blocks</a></li>
+        
+            <li><a href="#04-blocks-procs-and-lambdas">0.4 Blocks, Procs, and Lambdas</a></li>
+        
+            <li><a href="#10-classification">1.0 Classification</a></li>
+        
+            <li><a href="#12-inheriting-class">1.2 Inheriting Class</a></li>
+        
+            <li><a href="#13-redefining-overriding-and-super">1.3 Redefining, overriding, and super</a></li>
+        
+            <li><a href="#20-instance-variables-and-accessors">2.0 Instance Variables and Accessors</a></li>
+        
+            <li><a href="#21-class-variables-and-methods">2.1 Class Variables and Methods</a></li>
+        
+            <li><a href="#22-equality-of-objects">2.2 Equality of Objects</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="ruby-monk-notes-on-ruby-primer-ascent"><a name="user-content-ruby-monk-notes-on-ruby-primer-ascent" href="#ruby-monk-notes-on-ruby-primer-ascent" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Ruby Monk Notes on Ruby Primer - Ascent</h1>
+<blockquote>
+<p>Last Updated on Nov 14th 2015.</p>
+</blockquote>
+<h2 id="01-blocks"><a name="user-content-01-blocks" href="#01-blocks" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>0.1 Blocks</h2>
+<ul>
+<li>Official definition of blocks - "A section of code which is grouped together".</li>
+<li>or "A block is code that you can store in a variable like any other object and run on demand."</li>
+<li>The <code>lambda</code> keyword is what is most commonly used to create a block in Ruby.</li>
+<li>So, A block is like a method, but one that isn’t associated with any object.</li>
+<li><code>lambda</code> blocks are objects of <code>Proc</code> class.</li>
+<li><code>call</code> method is used to execute a lambda.</li>
+</ul>
+<p>Converting an method into a block with <code>to_proc</code> method.</p>
+<pre><code class="ruby">
+class Calculator
+  def add(a, b)
+    return a + b
+  end
+end
+
+addition_method = Calculator.new.method("add")
+addition =  addition_method.to_proc
+
+puts addition.call(5, 6)
+</code></pre>
+
+<h3 id="yield"><code>yield</code></h3>
+<ul>
+<li>without using <code>yield</code></li>
+</ul>
+<pre><code class="ruby">
+def calculation(a, b, operation)
+  operation.call(a, b)
+end
+
+puts calculation(5, 6, lambda { |a, b| a + b }) # addition
+puts calculation(5, 6, lambda { |a, b| a - b }) # subtraction
+</code></pre>
+
+<ul>
+<li>As you can see, the calculation method accepts two numbers and a block that can perform a mathematical operation.</li>
+<li>with <code>yield</code></li>
+</ul>
+<pre><code class="ruby">
+def calculation(a, b)
+  yield(a, b)
+end
+
+puts calculation(5, 6) { |a, b| a + b } # addition
+puts calculation(5, 6) { |a, b| a - b } # subtraction
+</code></pre>
+
+<ul>
+<li>How <code>yield</code> is different from the first example.</li>
+<li>The block is now no longer a parameter to the method. The block has been implicitly passed to the method - note how it's outside the parentheses.</li>
+<li>Yield makes executing the block feel like a method invocation within the method invocation rather than a block that's being explicitly called using Proc#call.</li>
+<li>
+<p>You have no handle to the block object anymore - yield "magically" invokes it without any object references being involved.</p>
+</li>
+<li>
+<p>Yield is not a method, even though it looks like one.</p>
+</li>
+<li>Doing a yield when there's no block can have unfortunate consequences - an exception (a LocalJumpError) with the message "no block given" is raised</li>
+<li>To defend against this outcome, Ruby offers the <code>block_given?</code> method that tells you if a block has been passed to a method implicitly.</li>
+</ul>
+<h2 id="02-implicit-and-explicit-blocks"><a name="user-content-02-implicit-and-explicit-blocks" href="#02-implicit-and-explicit-blocks" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>0.2 Implicit and Explicit Blocks</h2>
+<ul>
+<li>Sometimes, the performance benefits of implicit block invocation are outweighed by the need to have the block accessible as a concrete object.</li>
+<li>Converting from implicit to Explicit.</li>
+</ul>
+<pre><code class="ruby">
+def calculation(a, b, &block) # &block is an explicit (named) parameter
+ block.call(a, b)
+end
+
+puts calculation(5, 5) { |a, b| a + b } # this is an implicit block
+                                        # -- it is nameless and is not
+                                        # passed as an explicit parameter.  
+</code></pre>
+
+<ul>
+<li>Converting from Explicit to Implicit.</li>
+</ul>
+<pre><code class="ruby">
+def calculation(a, b)
+  yield(a, b) # yield calls an implicit (unnamed) block
+end
+
+addition = lambda {|x, y| x + y}
+puts calculation(5, 5, &addition) # like our last example, &addition is
+                                  # an explicit (named) block
+                                  # -- but `yield` can still call it!
+</code></pre>
+
+<ul>
+<li>Simple set of syntactic rules to convert blocks from one form to the other:</li>
+<li>The block should be the last parameter passed to a method.</li>
+<li>Placing an ampersand (&amp;) before the name of the last variable triggers the conversion.</li>
+<li>The convention is to use curly braces for blocks with just a single line of code, and do-end when more than one line is involved.</li>
+</ul>
+<h2 id="04-blocks-procs-and-lambdas"><a name="user-content-04-blocks-procs-and-lambdas" href="#04-blocks-procs-and-lambdas" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>0.4 Blocks, Procs, and Lambdas</h2>
+<ul>
+<li>A block created with <code>lambda</code> behaves like a method when you use return and simply exits the block, handing control back to the calling method.</li>
+<li>A block created with <code>Proc.new</code> behaves like it’s a part of the calling method when return is used within it, and returns from both the block itself as well as the calling method.</li>
+<li>As a consequence, Proc.new is something that’s hardly ever used to explicitly create blocks because of these surprising return semantics. It is recommended that you avoid using this form unless absolutely necessary.</li>
+</ul>
+<pre><code class="ruby">
+puts lambda {}
+puts Proc.new {}
+</code></pre>
+
+<ul>
+<li>The <code>-&gt;</code> literal form is a shorter version of Kernel#lambda. The following two lines produce identical results.</li>
+</ul>
+<pre><code class="ruby">
+short = ->(a, b) { a + b }
+puts short.call(2, 3)
+
+long = lambda { |a, b| a + b }
+puts long.call(2, 3)
+</code></pre>
+
+<ul>
+<li><code>Kernel#proc</code> factory method is identical to Proc.new. Note that proc is a method and not a literal form like -&gt; nor a keyword like yield.</li>
+</ul>
+<pre><code class="ruby">
+
+short = proc { |a, b| a + b }
+puts short.call(2, 3)
+
+long = Proc.new { |a, b| a + b }
+puts long.call(2, 3)
+</code></pre>
+
+<h2 id="10-classification"><a name="user-content-10-classification" href="#10-classification" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.0 Classification</h2>
+<ul>
+<li>Ruby gives us a method <code>is_a</code> that lets us ask which class does the object belongs to.</li>
+<li>As you've probably guessed, Object.<code>is_a?</code> accepts a single parameter - a class. Object#is_a? has an alias, Object#kind_of?.</li>
+<li>When classifying objects, it's fairly common to start out with general classes and then delve in to create sub-classes that are more specialized.</li>
+<li>This kind of parent-child relationship between classes is often referred to as inheritance, where the specialized class inherits the abilities of its more generic parent.</li>
+<li>The <code>Class#superclass</code> method tells you which class any given class was inherited from.</li>
+</ul>
+<pre><code class="ruby">
+puts Float.superclass    # Numeric
+puts Numeric.superclass  # Object
+puts Object.superclass   # BasicObject
+</code></pre>
+
+<ul>
+<li>All Inheritance Chains in ruby end in <code>BasicObject</code>. Calling BasicObject's superclass method returns <code>nil</code>.</li>
+</ul>
+<h2 id="12-inheriting-class"><a name="user-content-12-inheriting-class" href="#12-inheriting-class" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2 Inheriting Class</h2>
+<ul>
+<li><code>&lt;</code> syntax is used to indicate inheritance of one class to another</li>
+</ul>
+<pre><code class="ruby">
+class Rectangle
+  def initialize(length, breadth)
+    @length = length
+    @breadth = breadth
+  end
+
+  def perimeter
+    2 * (@length + @breadth)
+  end
+end
+
+# Create a class Square here
+class Square < Rectangle
+  def initialize(side)
+    @length = @breadth = side
+  end
+end
+</code></pre>
+
+<ul>
+<li>Square inherits from the Rectangle class and get perimeter method for free.</li>
+</ul>
+<h2 id="13-redefining-overriding-and-super"><a name="user-content-13-redefining-overriding-and-super" href="#13-redefining-overriding-and-super" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.3 Redefining, overriding, and <code>super</code></h2>
+<ul>
+<li><strong>Redefining</strong> a method involves simply replacing one method with another. The original method is simply... lost.</li>
+<li>Since almost every method in Ruby can be redefined, great care must be taken especially with core Ruby classes like Object, Array and so on. A thoughtless method redefinition can break the language entirely</li>
+<li><strong>Overriding</strong> in the context of classes involves defining a method in a subclass that is already defined in the superclass. This results in the method being overridden in the subclass, but doesn't in any way affect the method in the superclass.</li>
+<li>Most object oriented languages offer a mechanism by which an overridden method can be called by the overriding method. Ruby uses the <code>super</code> keyword to make this happen.</li>
+<li>A common use of inheritance is to have overridden methods in a subclass do something in addition to what the superclass method did, rather than something entirely different, and thats where <code>super</code> keyword comes into play.</li>
+</ul>
+<h2 id="20-instance-variables-and-accessors"><a name="user-content-20-instance-variables-and-accessors" href="#20-instance-variables-and-accessors" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.0 Instance Variables and Accessors</h2>
+<ul>
+<li><strong>Instance Variables</strong> are bound to an instance of a class and together forms what we call the state of an object. Every instance of a class has a different set of instance variables.</li>
+<li>Ruby Rules: if your variable does not start with a <code>@</code>, it is considered to be a local variable, and not an <strong>Instance Variable</strong>. A local variable is available only inside the method it is defined. It is not shared across the entire object.</li>
+<li>
+<p>The instance variable is bound to the specific instance of the class. By binding itself to the entire object, an instance variable makes itself available to every method of the object.</p>
+</li>
+<li>
+<p>Only the object's own methods can access its instance variables. So, you can have methods known as <strong>getter</strong> methods whose sole purpose is to return the value of a particular instance variable.</p>
+</li>
+<li>
+<p>Having to explicitly define <strong>getter</strong> methods ensures that the object is always in control of how your state is exposed to the public.</p>
+</li>
+<li>
+<p>To execute the statement item.color = 'red', Ruby invokes the the method Item#color= and passes the value 'red' to it. This means that all <strong>setter</strong> methods end with the = sign in their names.</p>
+</li>
+<li>
+<p>An Example for showing <strong>getters</strong> and <strong>setters</strong> in action.
+<pre><code class="ruby">
+class Item
+  def initialize(item_name, quantity)
+    @item_name = item_name
+    @quantity = quantity
+  end</p>
+</li>
+</ul>
+<p>def quantity=(new_quantity)
+    @quantity = new_quantity
+  end</p>
+<p>def quantity
+    @quantity
+  end<br />
+end</p>
+<p>item = Item.new("a",1)
+item.quantity = 3
+p item.quantity
+</code></pre></p>
+<h3 id="attr_accessors"><a name="user-content-attr_accessors" href="#attr_accessors" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>attr_accessors</h3>
+<ul>
+<li>Ruby provides a couple of methods to make life easy when declaring getters and setters for your object.</li>
+<li>The <code>attr_reader</code> method defines the reader method for you. This is a convenient shortcut that you can use when your getter simply returns the value of the variable of the same name.</li>
+<li>The <code>attr_writer</code> method defines a setter method that sets the value of the instance variable of the same name as the setter.</li>
+<li>
+<p>In some cases you might want to expose both the getter and setter for an instance variable. then, you can use another method, the <code>attr_accessor</code>, which will define both the getter and setter.</p>
+</li>
+<li>
+<p>Ruby restricting access to instance variables except through getters and setters is not a limitation of the language, but a deliberate constraint.</p>
+</li>
+</ul>
+<h2 id="21-class-variables-and-methods"><a name="user-content-21-class-variables-and-methods" href="#21-class-variables-and-methods" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1 Class Variables and Methods</h2>
+<ul>
+<li>Any method definition without the self qualifier is by default an instance method.</li>
+<li>Defining Class Methods example</li>
+</ul>
+<pre><code class="ruby">
+class Item
+  def self.show
+    puts "Class method show invoked"
+  end  
+end
+
+Item.show
+</code></pre>
+
+<ul>
+<li>In <code>def self.show</code>, the keyword <code>self</code> denotes that the method show is being defined in the context of the Class itself, not its instances.</li>
+<li>There is one more way of declaring class methods.</li>
+</ul>
+<pre><code class="ruby">
+class Item
+  class << self
+    def show
+      puts "Class method show invoked"
+    end
+  end
+
+end
+
+Item.show
+</code></pre>
+
+<ul>
+<li>
+<p><strong>NOTE</strong>: Class methods do not have access to instance methods or instance variables. However instance methods can access both class methods and class variables.</p>
+</li>
+<li>
+<p><strong>Class variables</strong> are prefixed with <code>@@</code>.</p>
+</li>
+<li>One of the places where class variables do find proper use is to store application configuration - things like application name, version, database and other settings.</li>
+</ul>
+<pre><code class="ruby">
+class ApplicationConfiguration
+  @@config = Hash.new
+  def self.set(property_name, value)
+    @@config[property_name] = value
+  end
+
+  def self.get(property_name)
+    @@config[property_name]
+  end  
+end
+
+ApplicationConfiguration.set("name", "Demo Application")
+ApplicationConfiguration.set("version", "0.1")
+
+p ApplicationConfiguration.get("version")
+
+</code></pre>
+
+<ul>
+<li><strong>Class Inheritance Variables</strong> example.</li>
+</ul>
+<pre><code class="ruby">
+class ApplicationConfiguration
+  @configuration = {}
+
+  def self.set(property, value)
+    @configuration[property] = value
+  end
+
+  def self.get(property)
+    @configuration[property]
+  end
+end
+
+class ERPApplicationConfiguration < ApplicationConfiguration
+  @configuration = {}
+end
+
+class WebApplicationConfiguration < ApplicationConfiguration
+  @configuration = {}
+end
+
+ERPApplicationConfiguration.set("name", "ERP Application")
+WebApplicationConfiguration.set("name", "Web Application")
+
+p ERPApplicationConfiguration.get("name")
+p WebApplicationConfiguration.get("name")
+
+p ApplicationConfiguration.get("name")
+</code></pre>
+
+<ul>
+<li>
+<p>Prefer <strong>class instance variables</strong> over <strong>class variables</strong> when you do really need store data at a class level. Class instance variables use the same notation as that of an instance variable. But unlike instance variables, you declare them inside the class definition directly.</p>
+</li>
+<li>
+<p>It is almost always a bad idea to use a <strong>class variable</strong> to store state. There are only a very few valid use cases where class variables are the right choice.</p>
+</li>
+<li>
+<p><strong>Instance</strong> variables are available only for instances of a class. They look like @name. Class variables are available to both class methods and instance methods. They look like @@name</p>
+</li>
+</ul>
+<h2 id="22-equality-of-objects"><a name="user-content-22-equality-of-objects" href="#22-equality-of-objects" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2 Equality of Objects</h2>
+<ul>
+<li>Checking for equality of two objects.</li>
+</ul>
+<pre><code class="ruby">
+class Item
+    def initialize(item_name, qty)
+        @item_name = item_name
+        @qty = qty
+    end
+end
+
+p Item.new("abcd",1)  == Item.new("abcd",1) #=> false
+</code></pre>
+
+<ul>
+<li>
+<p>That is the wrong answer! Both objects have exactly the same state and behaviour (since they belong to the same class) and should have been treated as identical objects.</p>
+</li>
+<li>
+<p>In Ruby, all binary operators (those which have two operands) including == are actually methods that gets invoked on the parameter on the left-hand side of the operator.</p>
+</li>
+<li>
+<p>Fixing the equality operator example.</p>
+</li>
+</ul>
+<pre><code class="ruby">
+class Item
+    attr_reader :item_name, :qty
+
+    def initialize(item_name, qty)
+        @item_name = item_name
+        @qty = qty
+    end
+    def to_s
+        "Item (#{@item_name}, #{@qty})"
+    end
+    def ==(other_item)
+      @item_name == other_item.item_name && @qty == other_item.qty
+    end
+end
+
+p Item.new("abcd",1)  == Item.new("abcd",1)
+p Item.new("abcd",2)  == Item.new("abcd",1)
+</code></pre>
+
+<ul>
+<li>
+<p>Even though overriding <code>==</code> worked for simple equality comparisons, there are some cases where that isn't just enough. There are a lot of operations in Ruby that need to check the equality of two objects. While <code>==</code> serves the purpose well, it is not really fast.</p>
+</li>
+<li>
+<p>Ruby provides a <code>hash</code> method with every object. It returns a numeric value which is usually unique to every object.</p>
+</li>
+<li>
+<p>So instead of comparing two objects using <code>==</code>, which could be expensive when the objects are large, Ruby uses the <code>hash</code> of the object when possible.</p>
+</li>
+<li>
+<p>The hash method returns the result of XORing all the instance variables that determine the state of the object</p>
+</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/"> MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script>var base_url = '../../..';</script>
+        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+        <script src="../../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

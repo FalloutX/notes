@@ -4,15 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-11-11</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>None/about/</loc>
-     <lastmod>2016-11-11</lastmod>
+     <lastmod>2017-01-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,14 +12,32 @@
     
         
     <url>
-     <loc>None/info/</loc>
-     <lastmod>2016-11-11</lastmod>
+     <loc>None/notes/elixir_getting_started/</loc>
+     <lastmod>2017-01-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/info/infopage1/</loc>
-     <lastmod>2016-11-11</lastmod>
+     <loc>None/notes/pwa_notes/</loc>
+     <lastmod>2017-01-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/notes/datavis_notes/</loc>
+     <lastmod>2017-01-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/notes/redux_notes/</loc>
+     <lastmod>2017-01-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -35,28 +45,34 @@
 
     
         
+    <url>
+     <loc>None/resources/learning_ruby/</loc>
+     <lastmod>2017-01-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/resources/general_dev_resources/</loc>
+     <lastmod>2017-01-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+    <url>
+     <loc>None/notes/ruby/</loc>
+     <lastmod>2017-01-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
     <url>
      <loc>None/internal/</loc>
-     <lastmod>2016-11-11</lastmod>
+     <lastmod>2017-01-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/react/1_Index/</loc>
-     <lastmod>2016-11-11</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/react/2_Introduction/</loc>
-     <lastmod>2016-11-11</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
     
 
 </urlset>

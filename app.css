@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700|Libre+Baskerville:400,700|Overpass:400,700');
+
+
+body {
+  font-family: "Libre Baskerville", Georgia,"Times New Roman",Times,serif;
+  font-size: 17px;
+  line-height: 1.99em;
+  color: #171717;
+}
+
+code, kbd, pre, samp {
+  font-size: 17px;
+  font-family: "Inconsolata", Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Overpass", "News Cycle","Arial Narrow Bold",sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #000;
+}
+
+a {
+  color: #2378cc;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: dodgerblue;
+  text-decoration: underline;
+}
+
+blockquote p {
+  font-style: italic;
+  color: #595959;
+  font-size: 15px;
+}
+
+@media (min-width: 992px) {
+  .bs-sidebar.affix {
+    top: 80px;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: 0px;
+}
+
+.bs-sidebar .nav > li > a {
+  font-size: 15px;
+}

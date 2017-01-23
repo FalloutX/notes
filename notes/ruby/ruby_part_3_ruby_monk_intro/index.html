@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+	<title>Ruby Notes P3 - Ruby Monk - FalloutX Notes</title>
+
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link href="../../../app.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">FalloutX Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+              
+                
+                    <li  >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+              
+            
+              
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../elixir_getting_started/">Elixir Getting Started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../pwa_notes/">Progressive Web Apps</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../datavis_notes/">Data Visualization</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../redux_notes/">Redux</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../ruby_part_1_codeacademy/">Ruby Notes P1 - CodeAcademy</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ruby_part_2_explanations/">Ruby Notes P2 - Explantions</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Ruby Notes P3 - Ruby Monk</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ruby_part_4/">Ruby Notes P4 - Ruby Monk Primer Ascent</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+              
+            
+              
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../resources/learning_ruby/">Learning Ruby</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../resources/general_dev_resources/">General Dev Resources</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+              
+            
+              
+            
+              
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../ruby_part_2_explanations/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../ruby_part_4/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#introductory-ruby-notesp3-from-ruby-monk">Introductory Ruby Notes(P3) - From Ruby Monk</a></li>
+        
+            <li><a href="#01-more-objects-and-methods">0.1 More Objects and Methods</a></li>
+        
+            <li><a href="#10-introduction-to-strings">1.0 Introduction to Strings</a></li>
+        
+            <li><a href="#12-advanced-string-operations">1.2 Advanced String Operations</a></li>
+        
+            <li><a href="#20-boolean-expressions-in-ruby">2.0 Boolean Expressions in Ruby</a></li>
+        
+            <li><a href="#21-the-ifelse-construct">2.1 The if..else construct</a></li>
+        
+            <li><a href="#22-loops-in-ruby">2.2 Loops in Ruby</a></li>
+        
+            <li><a href="#30-introduction-to-arrays">3.0 Introduction to Arrays</a></li>
+        
+            <li><a href="#31-basic-array-operations">3.1 Basic Array Operations</a></li>
+        
+            <li><a href="#32-iteration-in-arrays">3.2 Iteration in Arrays.</a></li>
+        
+            <li><a href="#40-introduction-to-ruby-hashes">4.0 Introduction to Ruby Hashes</a></li>
+        
+            <li><a href="#41-hashes-in-and-out">4.1 Hashes, in and out.</a></li>
+        
+            <li><a href="#50-classes">5.0 Classes</a></li>
+        
+            <li><a href="#51-building-your-own-class">5.1 Building your own class</a></li>
+        
+            <li><a href="#61-being-methodical">6.1 Being Methodical</a></li>
+        
+            <li><a href="#62-calling-a-method">6.2 Calling a method</a></li>
+        
+            <li><a href="#71-lambdas-in-ruby">7.1 Lambdas In Ruby</a></li>
+        
+            <li><a href="#72-blocks-in-ruby">7.2 Blocks in Ruby</a></li>
+        
+            <li><a href="#81-getting-modular">8.1 Getting Modular</a></li>
+        
+            <li><a href="#82-modules-as-namespaces">8.2 Modules as Namespaces</a></li>
+        
+            <li><a href="#91-streams">9.1 Streams</a></li>
+        
+            <li><a href="#92-using-the-file-class">9.2 Using the File Class</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="introductory-ruby-notesp3-from-ruby-monk"><a name="user-content-introductory-ruby-notesp3-from-ruby-monk" href="#introductory-ruby-notesp3-from-ruby-monk" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Introductory Ruby Notes(P3) - From Ruby Monk</h1>
+<blockquote>
+<p>Last Updated Nov 7th 2015.</p>
+</blockquote>
+<h3 id="01-more-objects-and-methods"><a name="user-content-01-more-objects-and-methods" href="#01-more-objects-and-methods" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>0.1 More Objects and Methods</h3>
+<ul>
+<li>Object.<code>methods</code> gives us an array of all the methods available on a given object.</li>
+<li>Array.<code>sort</code> sorts a given array.</li>
+<li>Array.<code>index(element)</code> gives the index of element in Array.</li>
+<li>Number.<code>between?(sm, lg)</code> returns true if Number is between sm and lg numbers.</li>
+</ul>
+<h3 id="10-introduction-to-strings"><a name="user-content-10-introduction-to-strings" href="#10-introduction-to-strings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.0 Introduction to Strings</h3>
+<ul>
+<li>'September' and "September" are called literal strings.</li>
+<li>Any valid block of Ruby code you place inside #{} will be evaluated and inserted at that location.</li>
+<li>A String literal created with single quotes does not support interpolation.</li>
+<li>Double quotes allow for escape sequences while single quotes do not.</li>
+<li>String.<code>include? "other_string"'</code> returns true if String contains other_string</li>
+<li>String.<code>start_with? "prefix"</code> returns true if String starts with prefix</li>
+<li>String.<code>end_with? "suffix"</code> returns true if String ends with suffix.</li>
+<li>It is conventional in Ruby to have '?' at the end of the method if that method returns only boolean values.</li>
+<li>String.<code>index "substring"</code> returns the index of first occurence of "substring" in String.</li>
+<li>String.<code>downcase</code> returns the lowercase version of String.</li>
+<li>String.<code>upcase</code> returns the uppercase version of String.</li>
+<li>String.<code>swapcase</code> returns the String with case swapped.</li>
+</ul>
+<h3 id="12-advanced-string-operations"><a name="user-content-12-advanced-string-operations" href="#12-advanced-string-operations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2 Advanced String Operations</h3>
+<ul>
+<li>String.<code>split(pattern)</code> splits the String depending on the pattern.</li>
+<li>concatenating string with <code>+</code>, <code>&lt;&lt;</code> and <code>String.concat</code>.</li>
+<li>'Ruby' + 'Monk' # returns 'RubyMonk'</li>
+<li>'Ruby'.concat('Monk') # returns 'RubyMonk'</li>
+<li>'Ruby' &lt;&lt; 'Monk' # appends 'Monk' to 'Ruby', giving 'RubyMonk'</li>
+<li>'&lt;&lt;' is just like '+', but in this case the String object 'Monk' will be appended to the object represented by 'Ruby' itself</li>
+<li>String.<code>sub(pattern, replacement)</code> replaces first appearance of pattern with replacement.</li>
+<li>String.<code>gsub(pattern, replacement)</code> replaces all occurrences of pattern.</li>
+<li>In Ruby you specify a RegEx by putting it between a pair of forward slashes (/).</li>
+<li>String.<code>match</code>converts a pattern to a RegEx, and then invokes its match method on the target String object.</li>
+</ul>
+<h3 id="20-boolean-expressions-in-ruby"><a name="user-content-20-boolean-expressions-in-ruby" href="#20-boolean-expressions-in-ruby" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.0 Boolean Expressions in Ruby</h3>
+<ul>
+<li>Equality comparison, <code>==</code></li>
+<li>others are <code>&lt;=</code>, <code>&gt;=</code>, '&lt;', <code>&gt;</code>, <code>!=</code> with their usual meaning.</li>
+<li><code>&amp;&amp;</code> stands for boolean 'and' and <code>||</code> stands for boolean 'or'.</li>
+<li><code>!</code> stands for negation.</li>
+</ul>
+<h3 id="21-the-ifelse-construct"><a name="user-content-21-the-ifelse-construct" href="#21-the-ifelse-construct" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1 The if..else construct</h3>
+<ul>
+<li>Ruby gives you the <code>elsif</code> keyword that helps you check for multiple possibilities inside an if..else construct, as shown in the example below.</li>
+</ul>
+<pre><code class="ruby">
+def check_sign(number)
+  if number > 0
+    "#{number} is positive"
+  elsif number == 0
+    "#{number} is zero"
+  else
+    "#{number} is negative"
+  end        
+end
+</code></pre>
+
+<ul>
+<li><code>unless</code> keyword can used in places where you want to check for a negative condition. for ex.</li>
+</ul>
+<pre><code class="ruby">
+age = 10
+unless age >= 18
+  puts "Sorry, you need to be at least eighteen to drive a car. Grow up fast!"
+end
+</code></pre>
+
+<ul>
+<li>Ternary operator consists of <code>?</code> and <code>:</code>,  <code>?</code> and <code>:</code> can be used to mean "then" and "else" respectively. ex</li>
+</ul>
+<pre><code class="ruby">
+def check_sign(number)
+  number > 0 ? "#{number} is positive" : "#{number} is negative"
+end
+</code></pre>
+
+<ul>
+<li>the objects <code>false</code> and <code>nil</code> equates to <code>false</code>, and therefore called <strong>falsy</strong>.  Every other object like say <code>1</code>, <code>0</code>, <code>""</code> are all evaluated to be true, and are called <strong>truthy</strong>.</li>
+</ul>
+<h3 id="22-loops-in-ruby"><a name="user-content-22-loops-in-ruby" href="#22-loops-in-ruby" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2 Loops in Ruby</h3>
+<ul>
+<li><code>do</code> loops. Below is an infinite do loop. It doesn't have a termination condition, therefore it never terminates.
+<pre><code class="ruby">
+loop do
+  puts "this line will be executed for an infinite amount of time"
+end
+</code></pre></li>
+<li><code>break</code> is used to break out of loops.</li>
+<li>Number.'times' runs a block of code Number times. ex.</li>
+</ul>
+<pre><code class="ruby">
+5.times do
+  # do the stuff that needs to be done
+  # This loop is run 5 times.
+end
+</code></pre>
+
+<h3 id="30-introduction-to-arrays"><a name="user-content-30-introduction-to-arrays" href="#30-introduction-to-arrays" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.0 Introduction to Arrays</h3>
+<ul>
+<li>creating an array: <code>[]</code> or <code>Array.new</code> or <code>[1,2, other_elements]</code></li>
+<li><code>array[n]</code> returns the element at nth index.</li>
+<li>Array indexes can also start from the end of the array, starting from <code>-1</code>. this is called <strong>reverse index lookup</strong>.</li>
+<li><code>&lt;&lt;</code> can be used to append elements to the Array. Also Array.<code>push(el)</code> does the same thing.</li>
+</ul>
+<h3 id="31-basic-array-operations"><a name="user-content-31-basic-array-operations" href="#31-basic-array-operations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1 Basic Array Operations</h3>
+<ul>
+<li>Array.<code>map</code> is used to perform a code block/method on each element of the Array. Array.<code>collect</code> is the alias for this method. ex</li>
+</ul>
+<pre><code class="ruby">
+[1, 2, 3, 4, 5].map { |i| i + 1 } # returns [2, 3, 4, 5, 6]
+</code></pre>
+
+<ul>
+<li>Array.<code>select</code> filters elements of an array according to a boolean code block/method given as an argument.ex</li>
+</ul>
+<pre><code class="ruby">
+names = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+names.select { |str| str.length > 5} # returns ["scissors", "lizard"]
+</code></pre>
+
+<ul>
+<li>Array.<code>delete(obj)</code> deletes all items from Array that are equal to obj.</li>
+<li>Array.<code>delete_if cond</code> deletes all items from Array that satisfy the given cond in the argument. ex</li>
+</ul>
+<pre><code class="ruby">
+[1,2,3,4,5,6,7].delete_if{|i| i < 4 } # returns [4, 5, 6, 7]
+</code></pre>
+
+<h3 id="32-iteration-in-arrays"><a name="user-content-32-iteration-in-arrays" href="#32-iteration-in-arrays" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.2 Iteration in Arrays.</h3>
+<ul>
+<li><code>for</code> loops with Arrays. For loops are not used very much in Ruby. ex
+<pre><code class="ruby">
+array = [1, 2, 3, 4, 5]
+for i in array
+  puts i
+end
+</code></pre></li>
+<li>Array.<code>each block</code> runs the argument block for each element of Array. Array.<code>each</code> are de-facto loop standards in Ruby. ex.</li>
+</ul>
+<pre><code class="ruby">
+array = [1, 2, 3, 4, 5]
+array.each do |i|
+  puts i
+end
+</code></pre>
+
+<h3 id="40-introduction-to-ruby-hashes"><a name="user-content-40-introduction-to-ruby-hashes" href="#40-introduction-to-ruby-hashes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.0 Introduction to Ruby Hashes</h3>
+<ul>
+<li>
+<p>A <strong>Hash</strong> is a collection of key-value pairs. You retrieve or create a new entry in a Hash by referring to its key. Hashes are also called 'associative arrays', 'dictionary', 'HashMap' etc. in other languages</p>
+</li>
+<li>
+<p>creating an hash: <code>{}</code> or <code>Hash.new</code> or <code>{1 =&gt; "one",2 =&gt; 12}</code></p>
+</li>
+<li><code>[]</code> is used for fetching values from a Hash. The brackets enclose the key.</li>
+<li>Adding key-value pairs: <code>hash["key"] = "value"</code></li>
+</ul>
+<h3 id="41-hashes-in-and-out"><a name="user-content-41-hashes-in-and-out" href="#41-hashes-in-and-out" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.1 Hashes, in and out.</h3>
+<ul>
+<li>Hash.<code>each block</code> is used to iterate over all elements of the hash. However unlike Array.<code>each</code>, it passes two values to the block: the key and the value of each element.</li>
+<li>[<strong>Extra</strong>] Number.<code>to_f</code> returns the float-version of the Number. By default, the division of int/int returns int.</li>
+<li>Hash.<code>keys</code> returns an array of all the keys in the Hash.</li>
+<li>Hash.<code>values</code> returns an array of all the values in the Hash</li>
+<li>Specifying a default in the Hash constructor will always return your custom default for any failed lookups on that hash instance. for ex, <code>Hash.new("default")</code> returns default for any failed lookups.</li>
+<li>The two shortcuts with <code>Hash::[]</code>.</li>
+<li>In first one, Hash::[] takes a flat list of parameters, arranged in pairs, and then converts that into a Hash.</li>
+<li>The second takes just one parameter: an array containing arrays which are themselves key-value pairs, and then converts that into a Hash.</li>
+</ul>
+<pre><code class="ruby">
+chuck_norris = Hash[:punch, 99, :kick, 98, :stops_bullets_with_hands, true] #first_way
+puts chuck_norris # returns {:punch=>99, :kick=>98, :stops_bullets_with_hands=>true}
+
+def artax
+  a = [:punch, 0]
+  b = [:kick, 72]
+  c = [:stops_bullets_with_hands, false]
+  key_value_pairs = [a, b, c]
+  Hash[key_value_pairs] # second way.
+end
+puts artax # returns {:punch=>99, :kick=>98, :stops_bullets_with_hands=>true}
+
+</code></pre>
+
+<h3 id="50-classes"><a name="user-content-50-classes" href="#50-classes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.0 Classes</h3>
+<ul>
+<li>One may look up the class of any object by simply calling the <code>class</code> method on it.</li>
+<li>Object.<code>is_a?(given_class)</code> returns true if the Object is an instance of the given_class.</li>
+<li>classes themselves are simply objects that belongs to the class <code>Class</code>.</li>
+<li><code>1.class.class</code> returns <code>Class</code>.</li>
+<li>calling the <code>new</code> method on a class results in an instance being created.</li>
+</ul>
+<h3 id="51-building-your-own-class"><a name="user-content-51-building-your-own-class" href="#51-building-your-own-class" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5.1 Building your own class</h3>
+<ul>
+<li><strong>CONVENTION</strong>: classes in Ruby have names beginning with a capital letter.</li>
+</ul>
+<p><strong>For a class to justify its existence, it needs to have two distinct features</strong>:</p>
+<p><strong>State</strong>: A class must have some kind of state that defines the attributes of its instances. In the case of a simple rectangle, this could simply be its length and breadth.</p>
+<p><strong>Behaviour</strong>: A class must also do something meaningful. This is achieved by the programmer adding methods to the class that interact with its state to give us meaningful results.</p>
+<ul>
+<li><strong>CONVENTION</strong>:  instance variables of the class, are part of the <strong>state</strong> and have <code>@</code> in front of them.</li>
+<li><code>initialize</code> method is the constructor of the class.</li>
+</ul>
+<h3 id="61-being-methodical"><a name="user-content-61-being-methodical" href="#61-being-methodical" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6.1 Being Methodical</h3>
+<ul>
+<li>Data an object contains is <em>what it is</em> and its methods are <em>what it can do</em>.</li>
+<li>Methods aren't exempt from Ruby's "everything is an object" rule. methods exposed by any object are themselves objects.</li>
+<li>All objects in Ruby expose a method <code>method</code> that can be used to get hold of any of its methods as an object.</li>
+<li>You can still call the method using the eponymous <code>call</code> method and it responds like a normal invocation of that method.</li>
+<li>Even a method that does nothing at all and has no return produces an object - the <code>nil</code>.</li>
+<li>The <code>return</code> exits the method; the <code>puts</code> statement that comes right after is never run.</li>
+</ul>
+<pre><code class="ruby">
+puts 1.method("next") # returns the method object - #<Method: Fixnum(Integer)#next>
+puts 1.method("next").call # calls the method object producing - 2
+
+def do_nothing
+end
+
+puts do_nothing.class # an empty method returns nil object.
+</code></pre>
+
+<h3 id="62-calling-a-method"><a name="user-content-62-calling-a-method" href="#62-calling-a-method" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6.2 Calling a method</h3>
+<ul>
+<li>
+<p>method arguments with default values.
+<pre><code class="ruby">
+def add(a_number, another_number = 0) # another_number has default value of 0.
+  a_number + another_number
+end
+</code></pre></p>
+</li>
+<li>
+<p><strong>splat operator (*)</strong>: The splat operator is used to handle methods which have a variable parameter list. The parameter list passed to an object is available as a list with splat operator. The splat operator works both ways - you can use it to convert arrays to parameter lists as easily as we just converted a parameter list to an array.</p>
+</li>
+</ul>
+<pre><code class="ruby">
+def add(a_number, another_number, yet_another_number)
+  a_number + another_number + yet_another_number
+end
+
+numbers_to_add = [1, 2, 3] # Without a splat, this is just one parameter
+puts add(\*numbers_to_add)  # without the splat operator numbers to add wont be changed into a parameter list.
+</code></pre>
+
+<ul>
+<li>You can even mix parameter lists and splatting.
+<pre><code class="ruby">
+def add(*numbers)
+  numbers.inject(0) { |sum, number| sum + number }
+end</li>
+</ul>
+<p>def add_with_message(message, *numbers)
+  "#{message} : #{add(*numbers)}"
+end</p>
+<p>puts add_with_message("The Sum is", 1, 2, 3)
+</code></pre></p>
+<ul>
+<li>Array.<code>join(delimiter)</code> creates a string delimited by the delimiter.</li>
+<li>Ruby allows the last parameter in the parameter list to skip using curly braces if it's a hash, making for a much prettier method invocation.</li>
+</ul>
+<pre><code class="ruby">
+def add(a_number, another_number, options = {}) # putting the last parameter as {} allows it to be  a  
+  sum = a_number + another_number
+  sum = sum.abs if options[:absolute]
+  sum = sum.round(options[:precision]) if options[:round]
+  sum
+end
+
+puts add(1.0134, -5.568)
+puts add(1.0134, -5.568, absolute: true)
+puts add(1.0134, -5.568, absolute: true, round: true, precision: 2)
+</code></pre>
+
+<ul>
+<li>Another example.</li>
+</ul>
+<pre><code class="ruby">
+
+def add(\*numbers)
+  numbers.inject(0) { |sum, number| sum + number }  
+end
+
+def subtract(\*numbers)
+  current_result = numbers.shift
+  numbers.inject(current_result) { |current_result, number| current_result - number }  
+end
+
+def calculate(\*arguments)
+  # if the last argument is a Hash, extract it
+  # otherwise create an empty Hash
+  options = arguments[-1].is_a?(Hash) ? arguments.pop : {}
+  options[:add] = true if options.empty?
+  return add(\*arguments) if options[:add]
+  return subtract(\*arguments) if options[:subtract]
+end
+
+</code></pre>
+
+<h3 id="71-lambdas-in-ruby"><a name="user-content-71-lambdas-in-ruby" href="#71-lambdas-in-ruby" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7.1 Lambdas In Ruby</h3>
+<ul>
+<li>a lambda is just a function, without a name. They're anonymous, little functional spies sneaking into the rest of your code.</li>
+<li>Lambdas in Ruby are also objects, just like everything else! The last expression of a lambda is its return value, just like regular functions.</li>
+<li>Lambdas take parameters by surrounding them with pipes.</li>
+<li><strong>CONVENTION</strong>: Use {} for single line lambdas and do..end for lambdas that are longer than a single line.</li>
+</ul>
+<pre><code class="ruby">
+increment = lambda {|x| x + 1 }
+increment.call(2) # returns 3
+</code></pre>
+
+<h3 id="72-blocks-in-ruby"><a name="user-content-72-blocks-in-ruby" href="#72-blocks-in-ruby" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7.2 Blocks in Ruby</h3>
+<p><strong>Lambdas vs Blocks</strong>
+A <strong>lambda</strong> is a piece of code that you can store in a variable, and is an object. The simplest explanation for a <strong>block</strong> is that it is a piece of code that can't be stored in a variable and isn't an object. It is, as a consequence, significantly faster than a <strong>lambda</strong>, but not as versatile and also one of the rare instances where Ruby's "everything is an object" rule is broken.</p>
+<ul>
+<li>'yield item' passes the item to the block associated with the method it resides in. <code>yield</code> keyword can call a single lambda that has been implicitly passed to a method without using the parameter list</li>
+</ul>
+<h3 id="81-getting-modular"><a name="user-content-81-getting-modular" href="#81-getting-modular" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>8.1 Getting Modular</h3>
+<ul>
+<li><strong>Modules</strong> only hold behaviour, unlike classes, which hold both behaviour and state.</li>
+<li>Since a module cannot be instantiated, there is no way for its methods to be called directly. Instead, it should be included in another class, which makes its methods available for use in instances of that class.</li>
+<li>In order to include a module into a class, we use the method <code>include</code> which takes one parameter - the name of a Module. example.</li>
+</ul>
+<pre><code class="ruby">
+module WarmUp
+  def push_ups
+    "Phew, I need a break!"
+  end
+end
+
+class Gym
+  include WarmUp
+
+  def preacher_curls
+    "I'm building my biceps."
+  end
+end
+
+puts Gym.new.push_ups # returns Phew, I need a break!
+
+</code></pre>
+
+<ul>
+<li>all modules in Ruby are instances of <code>Module</code>. <code>Module</code> is the superclass of <code>Class</code>, so this means that all classes are also modules, and can be used as such.</li>
+</ul>
+<h3 id="82-modules-as-namespaces"><a name="user-content-82-modules-as-namespaces" href="#82-modules-as-namespaces" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>8.2 Modules as Namespaces</h3>
+<ul>
+<li>Modules can also hold classes.</li>
+</ul>
+<pre><code class="ruby">
+module Perimeter
+  class Array
+    def initialize
+      @size = 400
+    end
+  end
+end
+</code></pre>
+
+<ul>
+<li>We have these two classes alongside each other. This is possible because we've namespaced our version of the Array class under the Perimeter module.</li>
+<li>The real problem that namespacing solves is when you're loading libraries.</li>
+<li>When you're creating libraries with Ruby, it is a good practice to namespace your code under the name of your library or project.</li>
+<li><code>::</code> is a <strong>constant lookup operator</strong> that looks up the Array constant only in the Perimeter module.</li>
+<li>you can scope any constant using <strong>constant lookup operator</strong>(<code>::</code>) operator, not just classes.</li>
+<li>We can nest constant lookups as deep as we want. And, we aren't restricted to just classes and modules.</li>
+<li>If you prepend a constant with :: without a parent, the scoping happens on the topmost level.</li>
+</ul>
+<h3 id="91-streams"><a name="user-content-91-streams" href="#91-streams" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>9.1 Streams</h3>
+<ul>
+<li>An <strong>input/output</strong> stream is a sequence of data bytes that are accessed sequentially or randomly.</li>
+<li>Streams are like an abstract, high level concept.</li>
+<li>I/O streams are used to work with almost everything about your computer that you can touch, see, or hear.</li>
+<li><strong>pure</strong> code is code without side-effects: code which simply performs calculations.</li>
+<li>
+<p>A <strong>pure</strong> program isn't very useful if it can't even print its results to the screen! This is where I/O streams come in.</p>
+</li>
+<li>
+<p>IO.<code>sysopen(Filename, mode)</code> gives a file descriptor which can be used, with IO.<code>new</code> to create new IO objects as shown below:</p>
+</li>
+</ul>
+<pre><code class="ruby">
+# open the file "new-fd" and create a file descriptor:
+fd = IO.sysopen("neee", "w")
+
+# create a new I/O stream using the file descriptor for "new-fd":
+p IO.new(fd)
+
+</code></pre>
+
+<ul>
+<li>The notion of creating a "file descriptor" is inherited from UNIX, where everything is a file.</li>
+<li>There are a bunch of I/O streams that Ruby initializes when the interpreter gets loaded. This is how to see them.</li>
+</ul>
+<pre><code class="ruby">
+io_streams = Array.new
+ObjectSpace.each_object(IO) { |x| io_streams << x }
+
+p io_streams
+
+</code></pre>
+
+<ul>
+<li>Ruby defines constants <code>STDOUT</code>, <code>STDIN</code> and <code>STDERR</code> that are IO objects pointing to your program's input, output and error streams that you can use through your terminal, without opening any new files.</li>
+<li>You can see them with <code>STDOUT.class</code>, showing the class name and <code>STDOUT.fileno</code> showing the fileno.</li>
+<li>Whenever you call <code>puts</code>, the output is sent to the IO object that <code>STDOUT</code> points to. Same with <code>gets</code> to <code>STDIN</code>.</li>
+<li>The Kernel module provides us with global variables <code>$stdout</code>, <code>$stdin</code> and <code>$stderr</code> as well, which point to the same IO objects that the constants <code>STDOUT</code>, <code>STDIN</code> and <code>STDERR</code> point to.</li>
+<li>The purpose of these global variables is <strong>temporary redirection</strong>: you can assign these global variables to another IO object and pick up an IO stream other than the one that it is linked to by default.</li>
+<li>We can use the StringIO class to easily fake out the IO objects. here is how to capture STDERR so that calls to warn  are redirected to our costum stringIO object.</li>
+</ul>
+<pre><code class="ruby">
+capture = StringIO.new
+$stderr = capture
+</code></pre>
+
+<h3 id="92-using-the-file-class"><a name="user-content-92-using-the-file-class" href="#92-using-the-file-class" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>9.2 Using the <code>File</code> Class</h3>
+<ul>
+<li>Opening, reading, and inspect a file with <code>File</code> class.</li>
+</ul>
+<pre><code class="ruby">
+mode = "r+"
+file = File.open("friend-list.txt", mode)
+puts file.inspect
+puts file.read
+file.close
+</code></pre>
+
+<ul>
+<li><code>mode</code> is a string that specifies the way you would like your file to be opened, it can be 'r+' for read-write, 'w' for write-only, 'r' for read-only. other modes are listed <a href="http://ruby-doc.org/core-1.9.3/IO.html">here</a>.</li>
+<li>File.<code>open</code> also takes an optional block which will auto-close the file you opened once you are done with it.</li>
+</ul>
+<pre><code class="ruby">
+what_am_i = File.open("clean-slate.txt", "w") do |file|
+  file.puts "Call me Ishmael."
+end
+
+p what_am_i # Call me Ishmael.
+
+File.open("clean-slate.txt", "r") {|file| puts file.read }
+</code></pre>
+
+<ul>
+<li>The File.<code>read</code> method accepts two optional arguments:<code>length</code>, the number of bytes upto which the stream will be read, and <code>buffer</code>, where you can provide a String buffer which will be filled with the file data.</li>
+<li>File.<code>rewind</code> rewinds the read file to the starting location so that it can be read again.</li>
+<li>File.<code>seek</code> lets you "seek" to a particular byte in the file to tell Ruby where you want to start reading from.</li>
+<li>File.<code>readlines</code> returns an array of all the lines of the opened IO stream.</li>
+<li>writing to a file with File.<code>write</code></li>
+</ul>
+<pre><code class="ruby">
+File.open("disguise", "w") do |f|
+  f.write("Bar")
+end
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/"> MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script>var base_url = '../../..';</script>
+        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+        <script src="../../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

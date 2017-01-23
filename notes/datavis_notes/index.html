@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Data Visualization - FalloutX Notes</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="../../app.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">FalloutX Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+              
+                
+                    <li  >
+                        <a href="../..">Home</a>
+                    </li>
+                
+              
+            
+              
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../elixir_getting_started/">Elixir Getting Started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../pwa_notes/">Progressive Web Apps</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Data Visualization</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../redux_notes/">Redux</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../ruby/ruby_part_1_codeacademy/">Ruby Notes P1 - CodeAcademy</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ruby/ruby_part_2_explanations/">Ruby Notes P2 - Explantions</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ruby/ruby_part_3_ruby_monk_intro/">Ruby Notes P3 - Ruby Monk</a>
+</li>
+
+        
+            
+<li >
+    <a href="../ruby/ruby_part_4/">Ruby Notes P4 - Ruby Monk Primer Ascent</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+              
+            
+              
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../resources/learning_ruby/">Learning Ruby</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../resources/general_dev_resources/">General Dev Resources</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+              
+            
+              
+            
+              
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../pwa_notes/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../redux_notes/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#introduction-to-data-visualization-d3-notes">Introduction to Data Visualization &amp; D3 Notes</a></li>
+        
+            <li><a href="#intro">Intro</a></li>
+        
+            <li><a href="#visualization-levels">Visualization Levels</a></li>
+        
+            <li><a href="#chart-types">Chart Types</a></li>
+        
+            <li><a href="#design-principles">Design Principles</a></li>
+        
+            <li><a href="#investigating-dimplejs">Investigating Dimple.js</a></li>
+        
+            <li><a href="#narrative-structures">Narrative Structures</a></li>
+        
+            <li><a href="#d3-joins">D3 Joins</a></li>
+        
+            <li><a href="#interactivity-in-data-visualizations">Interactivity in Data Visualizations</a></li>
+        
+            <li><a href="#learning-resources">Learning Resources</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="introduction-to-data-visualization-d3-notes"><a name="user-content-introduction-to-data-visualization-d3-notes" href="#introduction-to-data-visualization-d3-notes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Introduction to Data Visualization &amp; D3 Notes</h1>
+<blockquote>
+<p>Based on the Udacity course of similar name. Last Updated on 16th Jan 2017.</p>
+</blockquote>
+<h2 id="intro"><a name="user-content-intro" href="#intro" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Intro</h2>
+<ul>
+<li>
+<p><strong>Retinal Variables</strong> - Ordered and Nominal Values.</p>
+<ul>
+<li>Ordered Data: Size, Orientation, Color Saturation</li>
+<li>Nominal Data: Color Hue, Shape, Texture</li>
+</ul>
+</li>
+<li>
+<p><strong>Visual Encodings</strong> - Angle, Color Hue, Color Saturation, Length, Orientation, Position x, Position y, Shape, Size, Texture.</p>
+<ul>
+<li>Ranking (from most accurate to least accurate) [1985 Graphical Perception Paper by Cleveland and McGill ]
+<pre><code class="markdown">- Position, (Most Accurate)
+- Length,
+- Angle, Shape
+- Area,
+- Volume,
+- Color, Density(Saturation) (Least Accurate)
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p><a href="http://www.nytimes.com/interactive/2012/05/17/business/dealbook/how-the-facebook-offering-compares.html?_r=0">The Facebook Offering : How it Compares | NYTimes</a></p>
+</li>
+<li>
+<p><strong>Exploratory Data Analysis</strong></p>
+<ul>
+<li>A process where you try to discover insights into some data, find erroneous values, structure of data.</li>
+<li>Its supposed to be an interaction between the Information desinger and the data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Sketching</strong></p>
+<ul>
+<li>Trying to determine visual encodings, layout etc.</li>
+<li>Its supposed to be an Iterative process where the Information designer trying to discover how to best communicate the insights gained through Exploratory Data Analysis.</li>
+</ul>
+</li>
+</ul>
+<h2 id="visualization-levels"><a name="user-content-visualization-levels" href="#visualization-levels" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Visualization Levels</h2>
+<ul>
+<li>WebGL, Canvas, SVG - very low level (like Assembly language of visualization)<ul>
+<li>efficient, performant</li>
+<li>highly flexible</li>
+<li>low level</li>
+<li>hard to develop with, high development overhead.</li>
+</ul>
+</li>
+<li>
+<p>D3.js - works with HTML/SVG and can be used with CSS, (like C/C++ level of visualization, mid level).</p>
+<ul>
+<li>NVD3, Dimple.js, Richshaw - Libraries based on top of D3<ul>
+<li>Higher level of spectrum. (like python level of visualization)</li>
+<li>Either Charting Libraries like NVD3, Dimple.js</li>
+<li>Or for a specific kind of data, like Richshaw for time-series data.</li>
+</ul>
+</li>
+<li>Raw, Chartio - almost no flexibility, only a predefined set of charts.<ul>
+<li>higher level than NVD3 or Dimple.js, (Excel level of visualization.)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Visualization</strong> in Data Science</p>
+<ul>
+<li>Simple Solutions to solve problems.</li>
+<li>Choosing the right chart for the given dataset.</li>
+<li>Visual Encoding + Data Types + Relationships =&gt; Chart Type!!!</li>
+<li>Data Type - Continous/Categorical?</li>
+<li>Data Dimensions - 1D/2D/3D?</li>
+<li>Propotions - Pie Charts.</li>
+<li>Comparisions - Stacked Column Charts/Stacked Bar Graphs.</li>
+</ul>
+</li>
+</ul>
+<h2 id="chart-types"><a name="user-content-chart-types" href="#chart-types" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Chart Types</h2>
+<ul>
+<li><strong>Bar Chart</strong> - highlights individual values, supports comparisons, and can show rankings or deviations. Its particularly good at showing comparisions in categorial data, but not very good at showing comparision in time-series data, for which line charts are better suited.</li>
+<li><strong>Boxplot</strong> - shows distributions and quantiles, especially useful when comparing distributions</li>
+<li><strong>Pie Chart</strong> - shows part-to-whole relationship and best suited for one category; poor for making comparisons</li>
+<li><strong>Stacked Bar Chart</strong> - shows part-to-whole relationship and best suited for showing composition within categories and totals</li>
+<li><strong>Bubble Chart</strong> - shows how three or more sets of values vary; shows correlation</li>
+<li>
+<p><strong>Line chart</strong> - shows overall changes and patterns, usually over equally spaced intervals of time</p>
+<ul>
+<li><a href="http://www.perceptualedge.com/articles/visual_business_intelligence/line_graphs_and_irregular_intervals.pdf">Line Graphs and Irregular Intervals: An Incompatible Partnership by Stephen Few</a></li>
+<li><strong>Map</strong> - values are encoded on physical locations and patterns may be drawn by comparing locations</li>
+<li><strong>Scatterplot</strong> - shows how two pair sets of values (for example height and shoe size) vary; shows correlation. Also, Scatterplots aren't usually used for ordered datasets such a time series</li>
+<li><strong>Tables</strong> - Shows data where there is no encodings can be drawn/thought. Sometimes, a very raw form of data.</li>
+<li><strong>Choropleth</strong> - Geographic representation + Color Encodings.</li>
+<li><strong>Cartogram</strong> - Geographic representation + Size of the region.</li>
+<li><strong>Dot Map</strong> - Geographic representaion + Any Shape Encodings.</li>
+<li>
+<p>Other Amazing Graph types:</p>
+</li>
+<li>
+<p><a href="http://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf">Bullet Graph</a></p>
+</li>
+<li><a href="https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR">Spark Lines</a></li>
+<li><a href="http://www.perceptualedge.com/articles/guests/intro_to_cycle_plots.pdf">Cycle Plots</a></li>
+<li><a href="http://www.thefunctionalart.com/2012/09/in-praise-of-connected-scatter-plots.html">Connected Scatter Plots</a></li>
+<li><a href="https://www.wikiwand.com/en/Violin_plot">Violin Plots</a></li>
+<li><a href="https://www.wikiwand.com/en/Tornado_diagram">Tornado Graphs</a></li>
+<li><a href="https://www.wikiwand.com/en/Histogram">Histogram</a></li>
+<li><a href="http://flowingdata.com/2014/02/27/how-to-read-histograms-and-use-them-in-r/">How to Read Histograms</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="design-principles"><a name="user-content-design-principles" href="#design-principles" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Design Principles</h2>
+<ul>
+<li>
+<p><strong>Pre-attentive Attributes</strong></p>
+<ul>
+<li>Color (Hue or Saturation)</li>
+<li>Form (Shape)</li>
+<li>Movement</li>
+<li>Spatial Position.</li>
+<li>Also, the use of Negative Space.</li>
+<li><a href="http://www.perceptualedge.com/articles/ie/visual_perception.pdf">Tapping the Power of Visual Perception by Stephen Few</a></li>
+<li><a href="https://www.amazon.com/Information-Visualization-Third-Edition-Technologies/dp/0123814642">Book: Information Visualization, Perception for Design by Colin Ware</a></li>
+<li><a href="https://www.csc2.ncsu.edu/faculty/healey/download/tochi.96.pdf">High-Speed Visual Estimation Using Preattentive Processing</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Negative Space or Encoding Nothingness</strong></p>
+<ul>
+<li><a href="https://upload.wikimedia.org/wikipedia/commons/2/27/Snow-cholera-map-1.jpg">Snow's Cholera Map</a> - DONE</li>
+<li><a href="http://designforhackers.com/blog/whitespace-113/">Designing with White Space: Why 1+1=3</a></li>
+<li><a href="http://us1.campaign-archive2.com/?u=836dc9c64862f158af8a31e20&amp;id=fdcffdbf91">How Google Uses White Space</a></li>
+<li><a href="https://www.theguardian.com/world/interactive/2012/may/08/gay-rights-united-states">Gay rights in the US, state by state</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Color Encodings</strong></p>
+<ul>
+<li>
+<p>“Indeed, so difficult and subtle that avoiding catastrophe becomes the first principle in bringing color to information: Above all, do no harm.” - Tufte</p>
+</li>
+<li>
+<p>Careful with Color - "First, get it right in black and white."</p>
+</li>
+<li>Try not to be redudant with Color Encodings.</li>
+<li>Consider using less intense colors, medium hues and Pastels.</li>
+<li>Sometimes, only sometimes, use <span style="color:orangered;">color</span> to highlight</li>
+<li>
+<p><a href="http://www.perceptualedge.com/articles/visual_business_intelligence/rules_for_using_color.pdf">Practical Rules for Using Color in Charts by Stephen Few</a> - DONE</p>
+<ol>
+<li>: If you want different objects of the same color in a table or graph to look the same, make sure that the background — the color that surrounds them — is consistent.</li>
+<li>: If you want objects in a table or graph to be easily seen, use a background color that contrasts sufficiently with the object.</li>
+<li>: Use color only when needed to serve a particular communication goal.</li>
+<li>: Use different colors only when they correspond to differences of meaning in the data.</li>
+<li>: Use soft, natural colors to display most information and bright and/or dark colors to highlight information that requires greater attention.</li>
+<li>: When using color to encode a sequential range of quantitative values, stick with a single hue (or a small set of closely related hues) and vary intensity from pale colors for low values to increasingly darker and brighter
+ colors for high values</li>
+<li>: Non-data components of tables and graphs should be displayed just visibly enough to perform their role, but no more so, for excessive salience could cause them to distract attention from the data.</li>
+<li>: To guarantee that most people who are colorblind can distinguish groups of data that are color coded, avoid using a combination of red and green in the same display.</li>
+<li>: Avoid using visual effects in graphs.</li>
+</ol>
+</li>
+<li>
+<p><strong>Sequential Palette</strong> - A single set of ordered colors, which progresses in perceptually equal intervals.</p>
+</li>
+<li>
+<p><strong>Diverging Palette</strong> - This set consists of two sets of sequential colors—one that increases in intensity from the middle of the palette going upwards and one that increases from the middle going downwards. Also known as <strong>dual-ordered palette.</strong></p>
+</li>
+<li>
+<p><a href="http://www.rkriz.net/Projects//create_color_table/color_07.pdf">Rainbow Color Map (Still) Considered Harmful</a></p>
+</li>
+<li>
+<p><a href="http://www.poynter.org/2013/why-rainbow-colors-arent-always-the-best-options-for-data-visualizations/224413/">Why rainbow colors aren’t the best option for data visualization</a></p>
+</li>
+<li>
+<p><a href="https://www.r-bloggers.com/choosing-colour-palettes-part-i-introduction/">Choosing colour palettes. Part I: Introduction | R Bloggers</a></p>
+</li>
+<li>
+<p><a href="https://www.r-bloggers.com/choosing-colour-palettes-part-ii-educated-choices/">Choosing colour palettes. Part II: Educated Choices| R Bloggers</a></p>
+</li>
+<li>
+<p><a href="http://www.vizwiz.com/2013/02/improving-wsj-historical-us.html">Improving the WSJ Historical U.S. Unemployment Rates heat map | VizWiz</a></p>
+</li>
+<li>
+<p><a href="http://www.color-blindness.com/coblis/coblis.html">Color Blindness Simulator</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Gestalt Principles of Perception</strong></p>
+<ul>
+<li>We organize what we see in particular ways to make sense of visual information. There are six principles that influence the ways human see and understand visuals.<ol>
+<li>Proximity - Objects that are placed close to each other will often be percieved as one group.</li>
+<li>Similarity - Objects that look alike, with similar components or attributes, are more likely to be organised together.</li>
+<li>Figure and Ground - Viewers will perceive an object (figure) and a surface(ground), even if shapes are grouped together.</li>
+<li>Continuity - Objects will be grouped as a whole if they are co-linear, or follow a direction.</li>
+<li>Closure - In perception, there is a tendency to complete unfinished objects. We tend to ignore gaps and complete contour lines.</li>
+<li>Simplicity - Figures are seen as their simple elements instead of complicated shapes.</li>
+</ol>
+</li>
+<li><a href="http://www.slideshare.net/luisaepv/the-gestalt-laws-of-perception">The Gestalt Laws of Perception Slides</a> - DONE</li>
+<li><a href="http://emeeks.github.io/gestaltdataviz/section1.html">Gestalt Principles for Data Visualization</a></li>
+<li><a href="http://graphicdesign.spokanefalls.edu/tutorials/process/gestaltprinciples/gestaltprinc.htm">The Gestalt Principles</a></li>
+<li><a href="http://jimsaw.com/design/gestalt.html">Gestalt Design Notes</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Chart Junk</strong></p>
+<ul>
+<li>Definition: Anything that is on the chart but visually not necessary to the purpose/aim of the chart.</li>
+<li>Examples: heavy or dark grid lines, unneccessary text, ornamented chart axes, pictures within graphs, shading or 3D perspective.</li>
+<li><a href="http://www.perceptualedge.com/articles/dmreview/grid_lines.pdf">Grid Lines in Graphs are Rarely Useful</a></li>
+<li>Data to Ink Ratio: (Ink used to describe data)/(Ink used to describe everything else)</li>
+<li><strong>High Data to Ink Ratio</strong> is better.</li>
+<li>Lie Factor : (Size of the effect shown in the Graphic)/(Size of the effect shown in the data.)</li>
+<li><strong>Lie Factor</strong> of a graphic should be between 0.95 to 1.05.</li>
+<li>Size of the effect shown in the Graphic = (|2nd val - 1st val| x 100)/1st val</li>
+</ul>
+</li>
+<li>
+<p><strong>Grammar of Graphics</strong></p>
+<ul>
+<li>Seprating the Information &amp; Aesthetic Parts of a Data Viz Graphic.</li>
+<li>Book: The Grammar of Graphics by Leland Wilkinson.</li>
+<li>Line Charts are good for showing Trends in the data(ie like Google Trends), while tables are good for showing exact dip and heights in the graphic. Also finding a exact data point is  easier on a table.</li>
+<li>3 Key Principles:<ol>
+<li><em>Separation of Concerns</em> - Independently transform data and present data.</li>
+<li><em>Definition of Common Plot/Chart Elements</em> - Common composable elements in every graph, e.g. Coordinate System, Scales, Text Annotations, Shapes, Data types.</li>
+<li><em>Composition of those Common Elements</em> - for         - Categorical + Continuous x Cartesian = Bar Chart<ul>
+<li>Categorical + Continuous x Polar = Pie Chart</li>
+<li>Continuous + Continuous x Cartesian = Scatter Chart</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><a href="http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf">A Layered Grammar of Graphics</a></li>
+<li><a href="http://www.science-craft.com/2014/07/08/introducing-the-grammar-of-graphics-plotting-concept/">Introducing the Grammar of Graphics Plotting Concept</a></li>
+<li><a href="https://ramnathv.github.io/pycon2014-r/visualize/ggplot2.html">Grammar of Graphics for R &amp; ggplot2</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Improving Visualizations Case Studies</strong></p>
+<ul>
+<li><a href="http://www.perceptualedge.com/examples.php">Stephen Few Improves many poorly designed visualizations.</a></li>
+<li><a href="http://www.perceptualedge.com/blog/wp-content/uploads/2012/10/dashboard-competition-winner.png">Winner of perceptualedge Dashboard Design Competition 2012</a></li>
+<li><a href="http://flowingdata.com/category/statistics/mistaken-data/">Don't end up in Mistaken Data</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Common D3 Methods</strong></p>
+<ul>
+<li><a href="https://github.com/mbostock/d3/wiki/Selections#append">d3.selection.append</a> - inserts HTML or SVG elements into a web page</li>
+<li><a href="https://github.com/mbostock/d3/wiki/Selections#attr">d3.selection.attr</a> - changes a characteristic of an element such as position or fill</li>
+<li><a href="https://github.com/mbostock/d3/wiki/Requests#d3_json">d3.json</a> - loads a data file and returns an array of Javascript objects</li>
+<li><a href="https://github.com/mbostock/d3/wiki/API-Reference#d3layout-layouts">d3.layout </a> - applies common transformations on predefined chart objects</li>
+<li><a href="https://github.com/mbostock/d3/wiki/Arrays#d3_nest">d3.nest</a> - groups data based on particular keys and returns an array of JSON</li>
+<li><a href="https://github.com/mbostock/d3/wiki/API-Reference#d3scale-scales">d3.scale</a> - converts data to a pixel or color value that can be displayed</li>
+</ul>
+</li>
+<li>
+<p><strong>4 Quadrants of Visualization</strong></p>
+<ul>
+<li><a href="http://dataremixed.com/2012/05/data-visualization-clarity-or-aesthetics/">Data Visualization: Clarity or Aesthetics? 3-part Series.</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="investigating-dimplejs"><a name="user-content-investigating-dimplejs" href="#investigating-dimplejs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Investigating Dimple.js</h2>
+<ul>
+<li>
+<p>Website - <a href="http://dimplejs.org/">dimplejs.org</a></p>
+</li>
+<li>
+<p>Why Dimple.js?</p>
+<ol>
+<li>Build atop of D3.</li>
+<li>Gentle learning curve</li>
+<li>exposes native D3 objects.</li>
+</ol>
+</li>
+<li>
+<p>Sketching process of a Visualization:</p>
+<ol>
+<li>Following an Iterative process of designing a visualization.</li>
+<li>Often not a "right answer"</li>
+<li>Don't know a priori how data will interact with the aesthetics.</li>
+</ol>
+</li>
+<li>
+<p>console.table() - For inspecting data in a tabular format inside the chrome JavaScript console.</p>
+<ul>
+<li><a href="https://blog.mariusschulz.com/2013/11/13/advanced-javascript-debugging-with-consoletable">Advanced JavaScript Debugging with console.table()</a></li>
+<li>Be careful with console.data when using on a very big chunk of data.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">// Drawing a Simple Bar Chart in Dimple.js
+// Updated to D3V4 version with Dimple V2.3
+const margin = 75;
+const width = 1400;
+const height = 600;
+
+// Select an SVG element.
+var svg = dimple.newSvg(&quot;#barchart&quot;, width, height);
+
+// Instantiate a dimple chart.
+const myChart = new dimple.chart(svg, data);
+
+// Setting boundaries of the chart using margins.
+myChart.setBounds(margin, margin, width - 2 * margin, height- 2 * margin);
+
+// Add X-Axis as a Time Axis.
+const x = myChart.addTimeAxis(&quot;x&quot;, &quot;year&quot;);
+
+// Sort X-Axis by Date
+x.addOrderRule(&quot;Date&quot;);
+
+// Set Y-Axis as Measurment Axis.
+myChart.addMeasureAxis(&quot;y&quot;, &quot;attendance&quot;);
+
+// Add Series Data.
+myChart.addSeries(null, dimple.plot.bar);
+
+// Draw the chart on the SVG.
+myChart.draw();
+</code></pre>
+
+<h2 id="narrative-structures"><a name="user-content-narrative-structures" href="#narrative-structures" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Narrative Structures</h2>
+<ul>
+<li>FiveThirtyEight's Nate Silver discusses traditional journalism in his Essay <a href="http://fivethirtyeight.com/features/what-the-fox-knows/">What the Fox knows</a>, where he devides news articles into 4 quadrants based on two axes(Qualitative to Qauntative Analysis, Rigourous+Empirical to Anecdotal+Ad-hoc Analysis). For eg, Op-ed comes in Anecdotal+Ad-hoc, Qaulitative Quadrant.</li>
+</ul>
+<p><img alt="Approaches to Journalism: Nate Silver's 4 Quadrants" src="https://espnfivethirtyeight.files.wordpress.com/2014/03/538_intro4.png?quality=90&amp;strip=all&amp;w=575" /></p>
+<ul>
+<li>
+<p><strong>Correlation vs Causation</strong></p>
+<ul>
+<li>Correlation - A and B data series are similar.</li>
+<li>Causation - B data series depends on A data series and vice-versa.</li>
+<li>Even if a correlation is genuine and meaningful, it does not imply a causal relationship.</li>
+<li><a href="http://www.tylervigen.com/spurious-correlations">More Spurious Correlations</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Traditional Journalism vs Data Journalism</strong></p>
+<table>
+<thead>
+<tr>
+<th>Traditional Journalism</th>
+<th>Data Journalism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data around Narrative</td>
+<td>Narrative around Data</td>
+</tr>
+<tr>
+<td>Data merely exists to Support the Narrative.</td>
+<td>Narrative's purpose is to add context to the data.</td>
+</tr>
+<tr>
+<td>Delivery: Mostly delivered in a static form/ or even in print/physical form sometimes.</td>
+<td>Delivery: Delivered as an interactive visualization on the open web.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Misleading Visualizations</strong></p>
+<ul>
+<li>"Not Starting y-axis on a bar graph with 0."</li>
+<li>"High Lie Factor"</li>
+<li><a href="http://flowingdata.com/2012/08/06/fox-news-continues-charting-excellence/">Fox News continues charting excellence (not really)</a></li>
+<li><a href="http://blog.plot.ly/post/103126614582/four-unclear-graphs-about-healthcare-and">Fixing Bad Visualization Examples</a></li>
+<li><a href="http://www.perceptualedge.com/articles/visual_business_intelligence/save_the_pies_for_dessert.pdf">Save the Pie for Dessert</a></li>
+<li><a href="https://medium.com/i-data/misleading-with-statistics-c63780efa928#.eee9bluif">Misleading With Statistics</a> - How journalists make arguments with distorted data.</li>
+<li><a href="https://visualisingadvocacy.org/blog/disinformation-visualization-how-lie-datavis">Disinformation Visualization: How to lie with datavis</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Types of Bias in Data Visualizations</strong></p>
+<ul>
+<li>Author Bias<ul>
+<li>As the designer/presenter of data visualizations, your design choices should establish trust between the reader and the graphic. Your design choices should facilitate communication. Otherwise as Cole mentioned, you risk the overall credibility of your message among readers.</li>
+</ul>
+</li>
+<li>Data Bias<ul>
+<li>Data bias arises from the process of collecting data. Systematic measurement errors or faulty devices can bias raw data values, and selection bias can lead to subgroups that are not representative of the population of interest for a given question.</li>
+</ul>
+</li>
+<li>Reader Bias<ul>
+<li>Reader bias encompasses any preconceived notions or assumptions that a reader brings to interpreting a visualization.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Types of Narrative Structures</strong></p>
+<ul>
+<li>
+<p><a href="http://vis.stanford.edu/files/2010-Narrative-InfoVis.pdf">Narrative Visualization: Telling Stories with Data</a></p>
+<table>
+<thead>
+<tr>
+<th>Author-driven Narratives</th>
+<th>Viewer-driven Narratives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typically have well-defined start and end-points</td>
+<td>Well-defined start point but gives Viewers freedom to progress in multiple ways. Different viewers may end up in different end-points.</td>
+</tr>
+<tr>
+<td>less exploratory elements</td>
+<td>higher interactions and exploratory elements.</td>
+</tr>
+<tr>
+<td>strong ordering, heavy messaging, need for clarity &amp; speed.</td>
+<td>Very loose ordering, more freedom to viewers to explore data, ask questions.</td>
+</tr>
+<tr>
+<td><a href="http://visual.ly/visualizing-syrian-refugee-crisis?view=true">Example 1</a></td>
+<td><a href="http://www.nytimes.com/interactive/2012/11/02/us/politics/paths-to-the-white-house.html">Road to Whitehouse</a></td>
+</tr>
+<tr>
+<td><a href="http://www.nytimes.com/interactive/2012/05/17/business/dealbook/how-the-facebook-offering-compares.html">The Facebook Offering</a></td>
+<td><a href="http://sanfrancisco.crimespotting.org/#dtstart=2017-02-14T11:41:54-07:00&amp;zoom=11&amp;dtend=2017-03-09T23:59:59-07:00&amp;types=AA,Mu,Ro,SA,DP,Na,Al,Pr,Th,VT,Va,Bu,Ar&amp;lat=37.765&amp;hours=0-23&amp;lon=-122.467">San Francisco Crime Spotting</a></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Martini Glass Narrative:</p>
+<ul>
+<li>First part is more like an author-driven narrative while after the mid point it ends like viewer-driven narrative.</li>
+<li>Best of both, author-driven as well as viewer-driven narratives.</li>
+<li><a href="http://guns.periscopic.com/?year=2013">Gun Death in United States 2013</a></li>
+<li><a href="http://drones.pitchinteractive.com/">Drone Strikes</a></li>
+<li>TODO: Analyse Narrative Structures: <a href="https://classroom.udacity.com/courses/ud507/lessons/3069149263/concepts/30711389660923">https://classroom.udacity.com/courses/ud507/lessons/3069149263/concepts/30711389660923</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Annotating Charts</strong></p>
+<ul>
+<li>Use clear units, informative labels.</li>
+</ul>
+</li>
+</ul>
+<h2 id="d3-joins"><a name="user-content-d3-joins" href="#d3-joins" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>D3 Joins</h2>
+<ul>
+<li><a href="https://bost.ocks.org/mike/join/">Thinking with D3 Joins</a></li>
+<li>Joins, (in db theory), union of two or more tables.</li>
+<li><a href="https://bost.ocks.org/mike/circles/">The three circles</a></li>
+<li><code>.enter()</code> - rows of data.tsv, that are not bound to any SVG/HTML elements.</li>
+<li><code>.update()</code> - rows of data.tsv, that are bound to SVG/HTML elements.</li>
+<li><code>.exit()</code> - SVG/HTML elements, that are not bound to any rows of data.tsv.</li>
+<li><a href="http://www.d3noob.org/2012/12/setting-scales-domains-and-ranges-in.html">Setting Scales Domains and Ranges in d3.js</a></li>
+<li><a href="https://www.dashingd3js.com/d3js-axes">D3.js Axes</a></li>
+</ul>
+<h2 id="interactivity-in-data-visualizations"><a name="user-content-interactivity-in-data-visualizations" href="#interactivity-in-data-visualizations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Interactivity in Data Visualizations</h2>
+<ul>
+<li>
+<p><a href="http://www.nytimes.com/interactive/2009/11/06/business/economy/unemployment-lines.html?_r=0">The Jobless Rate for People Like You</a></p>
+</li>
+<li>
+<p>Add Interactivity &amp; Animations to a static graph to move a author-driven narrative towards a martini glass narrative.</p>
+</li>
+<li>
+<p><strong>Creating a Map</strong> - <a href="https://bost.ocks.org/mike/map/">Let's make a map</a></p>
+<ul>
+<li>Acquire data: Shape files(for drawing regional boundaries etc), TopoJSON, GeoJSON</li>
+<li>Shapefiles are encoded in binary, while GeoJSON is a valid JSON which is human readable and easily interpreted by JS/Browsers. GeoJSON is more verbose and bigger than a binary Shape file.</li>
+<li>TopoJSON can encode Topology(adjacency and links between places), while both Shapefiles &amp; GeoJSON can encode Topography.</li>
+<li>Projection: Some object in 3-dimensions projected in a 2-dimension. Some loss in information is unavoidable in projections.</li>
+<li>Mercator Projection: Stretch/Distort area near poles, Preserve  equatorial represation. (d3.geo.mercator() converts long,lat values into pixel values.)</li>
+<li><a href="http://ogre.adc4gis.com/">Convert to GeoJSON, Convert from GeoJSON</a></li>
+<li><a href="http://ben.balter.com/2013/06/26/how-to-convert-shapefiles-to-geojson-for-use-on-github/">How to convert Shapefiles to GeoJSON maps for use on GitHub (and why you should)</a></li>
+<li><a href="http://geojson.io/#map=6/24.197/79.014">GeoJSON Editor</a></li>
+<li><a href="http://mapschool.io/">MapSchool.io</a></li>
+<li><a href="http://www.macwright.org/2014/01/06/mapschool.html">Mapschool by Tom Wright</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Thematic Maps</strong> - Maps with some data that represent some topic or theme. ex, dot maps, chloropleths, and cartograms. World cup map with attendance levels is part of Graduated Symbols maps.</p>
+</li>
+<li>
+<p><strong>d3.nest()</strong> - used for grouping/aggregating data etc.</p>
+<ul>
+<li>d3.nest().key - grouping.</li>
+<li>d3.nest().rollup - aggregation. (Input to rollup is a group of data elements not a single element.)</li>
+<li><a href="http://bl.ocks.org/phoebebright/raw/3176159/">D3 Nest Tutorial and examples</a></li>
+</ul>
+</li>
+<li>
+<p><strong>D3 Animations &amp; Transitions</strong></p>
+<ul>
+<li><a href="http://www.jeromecukier.net/blog/2012/07/16/animations-and-transitions/">D3.js: animations and transitions</a></li>
+<li><a href="http://synthesis.sbecker.net/articles/2012/07/10/learning-d3-part-3-animation-interaction">Learning D3 Part 3: Animation &amp; Interaction</a></li>
+<li><a href="http://blog.andreaskoller.com/2014/02/d3-and-ui-animations/">D3 and UI animations</a></li>
+<li><a href="http://www.stator-afm.com/tutorial/d3-js-mouse-events/">D3.js Mouse Events</a></li>
+<li><a href="http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html">Adding tooltips to a d3.js graph</a></li>
+<li><a href="http://christopheviau.com/d3_tutorial/">Try D3 Now</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Maps</strong></p>
+<ul>
+<li><a href="http://www.d3noob.org/2013/03/a-simple-d3js-map-explained.html">A simple d3.js map explained</a></li>
+<li><a href="http://blog.webkid.io/multiple-maps-d3/">Small multiple maps using d3</a></li>
+<li><a href="http://www.scribblelive.com/blog/2012/02/01/how-to-make-choropleth-maps-in-d3/">How to Make Choropleth Maps in D3</a></li>
+<li><a href="https://plot.ly/~etpinard/453/average-daily-surface-air-temperature-anomalies-c-in-july-2014-with-respect-to-1/">average-daily-surface-air-temperature-anomalies</a></li>
+<li><a href="https://plot.ly/~MattSundquist/878/the-1000-most-populous-canadian-cities/">The 1000 Most Populous Canadian Cities</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Other Links</strong>:</p>
+<ul>
+<li>
+<p><a href="http://www.huffingtonpost.com/randy-krum/false-visualizations-when_b_5736106.html">False Visualizations: When Journalists Get Data Viz Wrong</a></p>
+</li>
+<li>
+<p><a href="http://themendozaline.org/post/95757674381/this-bubble-chart-is-killing-me">This Bubble Chart is Killing Me</a></p>
+</li>
+<li>
+<p><a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/">Understand JavaScript’s “this” With Clarity, and Master It</a></p>
+</li>
+<li>
+<p><a href="http://tomhicks.github.io/code/2014/08/11/some-of-this.html">Some of 'this'</a></p>
+</li>
+<li>
+<p><a href="https://pypi.python.org/pypi/basemap/1.0.7">basemap Python Package</a></p>
+</li>
+<li>
+<p><a href="https://cran.r-project.org/web/packages/maps/maps.pdf">R 'maps' package</a></p>
+</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<h2 id="learning-resources"><a name="user-content-learning-resources" href="#learning-resources" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Learning Resources</h2>
+<ul>
+<li><a href="http://chimera.labs.oreilly.com/books/1230000000345">Book: Interactive Data Visualization for the Web by Scott Murray</a></li>
+<li><a href="http://svgpocketguide.com/book/">Book: Pocket Guide to Writing SVG</a></li>
+<li><a href="https://github.com/d3/d3-3.x-api-reference/blob/master/API-Reference.md">D3 API Reference(v3 version)</a></li>
+<li><a href="https://github.com/d3/d3/wiki/Tutorials">D3 Tutorials Page</a></li>
+<li><a href="http://dimplejs.org/index.html">Dimple.js</a></li>
+<li><a href="http://tributary.io/">Tributary - experimental environment for rapidly prototyping visualization code</a></li>
+<li><a href="https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html">An SVG Primer for Today's Browsers</a></li>
+<li><a href="https://www.dashingd3js.com/table-of-contents">Dashing d3 Tutorial</a></li>
+<li><a href="http://flowingdata.com/">Blog: Flowing Data</a></li>
+<li><a href="http://www.thefunctionalart.com/">Blog: The Functional Art by Alberto Cairo</a></li>
+<li><a href="http://www.visualisingdata.com/">Site: Visualizing Data </a></li>
+<li><a href="https://bost.ocks.org/mike/">Blog: Mike Bostocks</a></li>
+<li><a href="http://www.storytellingwithdata.com/">Blog: Story Telling with Data</a></li>
+<li><a href="https://cartastrophe.wordpress.com/">Blog: Cartastrophe DataViz Blog</a></li>
+<li><a href="http://onlinestatbook.com/2/index.html">Book: Online Stats Book</a></li>
+<li><a href="http://datajournalismhandbook.org/1.0/en/index.html">Book: Data Journalism Handbook</a></li>
+<li><a href="https://www.targetprocess.com/articles/visual-encoding/">Visual Encoding</a></li>
+<li><a href="http://flowingdata.com/2010/03/20/graphical-perception-learn-the-fundamentals-first/">Graphical perception – learn the fundamentals first</a></li>
+<li><a href="http://queue.acm.org/detail.cfm?id=1805128">Paper: A Tour though Visualization Zoo</a></li>
+<li><a href="https://apandre.files.wordpress.com/2011/02/chartchooserincolor.jpg">Chart Chooser in Color</a></li>
+<li><a href="http://www.storytellingwithdata.com/blog/2013/04/chart-chooser">Cole Nussbaumer on the Chart Chooser</a></li>
+<li><a href="http://labs.juiceanalytics.com/chartchooser/index.html">Interactive Chart Chooser</a></li>
+<li><a href="http://www.perceptualedge.com/images/Effective_Chart_Design.pdf">Designing Effective Tables and Graphs by Stephen Few</a></li>
+<li><a href="http://www.perceptualedge.com/articles/ie/the_right_graph.pdf">Selecting the Right Graph for Your Message by Stephen Few</a></li>
+<li><a href="https://signalvnoise.com/posts/3388-three-charts-are-all-i-need">Three charts are all I need</a></li>
+<li><a href="http://www.scribblelive.com/blog/2012/08/27/how-groups-stack-up-when-to-use-grouped-vs-stacked-column-charts/">When to use Grouped vs. Stacked Column Charts</a></li>
+<li><a href="http://flowingdata.com/2012/05/15/how-to-visualize-and-compare-distributions/">How to Visualize and Compare Distributions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">Array.prototype.sort()</a></li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/"> MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
