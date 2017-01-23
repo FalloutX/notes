@@ -1,14 +1,19 @@
-site_name: FalloutX Info
+site_name: FalloutX Notes
 
 pages:
 - Home: index.md
 - About: about.md
-- Info:
-  - 'Info Index': info/index.md
-  - 'Info Page 1': info/infopage1.md
+- Notes:
+  - 'Elixir Getting Started': notes/elixir_getting_started.md
+  - 'Progressive Web Apps': notes/pwa_notes.md
+  - 'Data Visualization': notes/datavis_notes.md
+  - 'Redux': notes/redux_notes.md
+  - Ruby:
+    - 'Ruby Notes Part 1.': notes/ruby/ruby_part_1_codeacademy.md
 - __Internal: internal.md
 
 theme_dir: journal_theme
+extra_css: [app.css]
 markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.githubemoji
@@ -17,3 +22,4 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.magiclink
   - pymdownx.headeranchor
+  - pymdownx.progressbar

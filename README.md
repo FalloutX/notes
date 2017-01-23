@@ -1,2 +1,3 @@
-- Documenting some of the stuff. Not very Important.
+- Documenting some of the stuff. Notes/ Todos and other stuff.
+- May be try out logs on this
 - Trying out Mk-Docs.
