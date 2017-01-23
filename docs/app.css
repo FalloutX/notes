@@ -34,3 +34,15 @@ blockquote p {
   color: #595959;
   font-size: 15px;
 }
+
+@media (min-width: 992px) {
+  .bs-sidebar.affix {
+    top: 80px;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: 0px;
+}
+
+.bs-sidebar .nav > li > a {
+  font-size: 15px;
+}
