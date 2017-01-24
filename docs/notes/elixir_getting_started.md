@@ -169,7 +169,283 @@
 
     - call the pass function `f` with `a` argument as `f.(a)`
 
-## Control Flow
 
-- Branching logic: if, cond, case.
+## Control Flow in Elixir
+
+- Branching logic: if-else, cond, case.
+
 - Iterating logic: recursion, no loops.
+
+- **If-Else**
+
+    ```elixir
+    ## first functon with If Else
+
+    def firstIF(list) do
+        if length(list) == 0 do
+            nil
+        else
+            hd(list)
+        end
+    end
+    ```
+
+- **Unless** - for the negative condtion instead of If.
+
+    ```elixir
+    def firstUnless(list) do
+    	unless length(list) == 0 do
+    		hd(list)
+      end
+    end
+    ```
+
+    - `quote EXP` prints out the Abstract syntax tree for evaluating the EXP.
+
+- **Cond** macro
+
+        ```elixir
+        #Getting Day Abbreviation using the cond macro.
+        def day_abbreviation(day) do
+            cond do
+                day == :Monday -> "M"
+                day == :Tuesday -> "Tu"
+                day == :Wednesday -> "W"
+                day == :Thursday -> "Th"
+                day == :Friday -> "F"
+                day == :Saturday -> "Sa"
+                day == :Sunday -> "Su"
+                true -> "Invalid Day"
+            end
+        end
+        ```
+
+- **Case**
+
+
+    -   Case statements are really useful combined with Pattern Matching capabilities of Elixir.
+    -   You can also combine Gaurd Clauses with case statements for narrowing down cases.
+
+    ```elixir
+    def describe_date(date) do
+        case date do
+            {1, _, _} -> "Brand New Month!"
+            {25, 12, _} -> "Merry Christmas"
+            {25, month, _} -> "Only #{12-month} months until Christmas!"
+            {31, 10, _} -> "Happy Halloween"
+            {_, _ , _} -> "Just an average day!"
+        end
+    end
+    ```
+
+## Recursion in Elixir
+
+> To understand what recursion is, you must first understand recursion.
+
+
+- Writing a map function with Recursion.
+
+```elixir
+def map([], _), do: []
+def map([head | tail], f) do
+    [f.(head) | map(tail, f)]
+end
+```
+
+
+
+
+- **Tail Recursion**
+
+    - only happens when the last operation a function performs is recursion.
+
+```elixir
+# tail_map written with tail recursion instead of Recursion.
+# also need reverse method to reverse the result.
+
+def reverse(list), do: reverse(list, [])
+def reverse([], reversed), do: reversed
+def reverse([hd | tl], reversed), do: reverse(tl, [hd | reversed])
+
+
+def tail_map([hd | tl], f), do: tail_map(tl, f, [f.(hd)])
+def tail_map([], _, result), do: reverse(result)
+def tail_map([hd | tl], f, result), do: tail_map(tl, f, [f.(hd) | result]
+```
+
+## Elixir Ecosystem.
+
+- __Basics__: Mix - Build Tool & Hex - Package Manager.
+
+- **Mix** - Task Runner, Build Tool for Elixir.
+    - [Mix | Elixir School](https://elixirschool.com/lessons/basics/mix/)
+    - [Introduction to Mix](http://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html)
+    - `mix help` to list all the mix commands.
+    - `mix local.hex` to install hex - package manager.
+
+- **`mix new`**
+    - for scaffolding a new elixir application.
+    - `mix new app_name --sup` creates a new elixir application named `app_name` w/ supervisor. `app_name` needs to be in snake_case.
+
+- **Supervisors & Umbrellas**
+    - **Supervisor** process is only responsible for supervising other processes in the application and restart them if they crash.
+    - **Umbrella** project is the one which has other elixir projects underneath it. A Grouping of similar elixir apps bundled into a single project.
+
+- **Hex** - [Website](https://hex.pm/)
+    - The package manager for Elixir Ecosystem.
+    - `mix.exs` files's `deps` function contains the dependencies list.
+    - `mix deps.get` to fetch and install the dependencies.
+
+## Creating an Application.
+
+- **Project Structure**
+    - `mix.exs` - `project` function contains config of the project like elixir version, project version, dependencies etc. `application` function contains the other applications that need to be started for our application to get started.
+    - `lib` folder contains our application code as well as our application module.
+    - `config` folder holds files that are used for config properties.
+    - `deps` folder is where dependencies get installed.
+    - `test` is the conventional folder for your tests.
+
+- **A Short Description of the Application**
+    - This Application will read lines from a file, choose a random line and send that line as a tweet.
+
+- **FileReader Module**
+```elixir
+
+# This Reads a file, and returns a random line from the file.
+defmodule MyFirstApp.FileReader do
+    def get_strings_to_tweet(filepath) do
+        File.read!(filepath)
+        |> String.split("\n")
+        |> Enum.map(&String.trim/1)
+        |> Enum.filter(&String.length(&1) <= 140)
+        |> Enum.random()
+    end
+end
+
+```
+
+- **Tweet Module**
+
+```elixir
+defmodule MyFirstApp.Tweet do
+    def send(str) do
+        # Configure the Extwitter Module for accessing twitter.
+        ExTwitter.configure(:process, [
+            consumer_key: System.get_env("ELIXIR_APPS_TWITTER_CONSUMER_KEY"),
+            consumer_secret: System.get_env("ELIXIR_APPS_TWITTER_CONSUMER_SECRET"),
+            access_token: System.get_env("ELIXIR_APPS_TWITTER_ACCESS_TOKEN"),
+            access_token_secret: System.get_env("ELIXIR_APPS_TWITTER_ACCESS_SECRET")
+            ])
+        # Send tweet.
+        ExTwitter.update(str)
+    end
+
+    def send_random(file) do
+        # this would send a random line from a file as a tweet.
+        MyFirstApp.FileReader.get_strings_to_tweet(file) |> send
+    end
+end
+```
+
+- **Behaviours**
+    - Defines a set of functions to be implemented.
+    - Ensure that a module implements ALL functions in that set.
+    - More like Interfaces in traditional OO languages.
+
+- **Creating a Tweet Server**
+    - Using GenServer, which is a behaviour in Elixir.
+
+```elixir
+
+defmodule MyFirstApp.TweetServer do
+  use GenServer # GenServers are behaviours in Elixir
+
+  def start_link() do
+    # hardcoding the name of the server
+    # start_link will call init.
+    GenServer.start_link(__MODULE__, :ok, name: :tweet_server)
+  end
+
+  def init(:ok) do
+    {:ok, %{}}
+  end
+
+  def handle_cast({:tweet, tweet}, _) do
+    # Async
+    # handle_call is sync.
+    MyFirstApp.Tweet.send(tweet)
+    {:noreply, %{}}
+  end
+
+  def tweet(tweet) do
+    # This will call handle_cast above
+    GenServer.cast(:tweet_server, {:tweet, tweet})
+  end
+
+end
+
+```
+
+- **Adding Tweet Server in Supervision Tree**
+    - Add TweetServer in the supervision children list in `start` function of the application.ex
+
+    - __File__: lib/my_first_app/application.ex
+
+```elixir
+def start(_type, _args) do
+  import Supervisor.Spec, warn: false
+
+
+  children = [
+    worker(MyFirstApp.TweetServer, []) # Adding TweetServer in the supervision tree.
+  ]
+
+  opts = [strategy: :one_for_one, name: MyFirstApp.Supervisor]
+  Supervisor.start_link(children, opts)
+end
+```
+
+- **TweetServer processes**
+    - `Process.whereis(:tweet_server)` to get the process ID of the tweet_server. This is not a OS process ID, but elixir process ID.
+    - `Process.whereis(:tweet_server) |> Process.exit(:kill)` to kill the tweet server.
+    - But since tweet server is in the Supervision tree, it'll be started again after we killed it.
+
+- **Schedule Sending Tweets**
+
+```elixir
+defmodule MyFirstApp.Scheduler do
+  def schedule_file(schedule, file) do
+    Quantum.add_job(schedule, fn -> MyFirstApp.FileReader.get_strings_to_tweet(file)
+    |> MyFirstApp.TweetServer.tweet end)
+  end
+
+end
+```
+
+- **Adding Scheduler to the start of the applicaiton**
+
+    - modifying the `start` function in the `application.exs` file.
+
+```elixir
+
+def start(_type, _args) do
+  import Supervisor.Spec, warn: false
+
+  # Define workers and child supervisors to be supervised
+  children = [
+    # Starts a worker by calling: MyFirstApp.Worker.start_link(arg1, arg2, arg3)
+    worker(MyFirstApp.TweetServer, [])
+  ]
+
+  # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
+  # for other strategies and supported options
+  opts = [strategy: :one_for_one, name: MyFirstApp.Supervisor]
+  process = Supervisor.start_link(children, opts)
+  MyFirstApp.Scheduler.schedule_file("*/5 * * * *",
+  Path.join("#{:code.priv_dir(:my_first_app)}", "Sample.txt"))
+
+  process
+end
+```
+
+## Testing Elixir

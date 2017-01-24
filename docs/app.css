@@ -41,8 +41,21 @@ blockquote p {
     overflow-y: scroll;
     position: fixed;
     bottom: 0px;
+  }
 }
 
 .bs-sidebar .nav > li > a {
   font-size: 15px;
+}
+
+#progress-bar {
+  height: 4px;
+  position: fixed;
+  top: 60px;
+  width: 60%;
+  box-shadow: 3px 0px 1px 0px #2378cc;
+  background-color: dodgerblue;
+  opacity: 1;
+  left: 0;
+  transition: 0.2s all linear;
 }
