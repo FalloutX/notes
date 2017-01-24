@@ -1,6 +1,6 @@
 # Getting Started with Elixir
 
-> Updated 23rd Janaury 2017.
+> Updated 25th Janaury 2017.
 
 ## Elixir Data Types.
 
@@ -449,3 +449,137 @@ end
 ```
 
 ## Testing Elixir
+
+- `mix test` to run the tests
+- `mix test FILEPATH` to run the tests located at the `FILEPATH`.
+- `mix test --only TAGNAME` to run the test tagged `TAGNAME`.
+
+```elixir
+# Tagging a test
+@tag watching: true
+test "this test will fail" do
+  assert 2 + 3 == 5
+end
+```
+
+- **ExUnit**
+    - `use ExUnit.Case` needs to be in every Test Module.
+    - Try to mimick directory structure of the app in the tests folder.
+
+- **Testing File Reader Module**
+
+    - Updated File Reader Module
+```elixir
+# lib/my_first_app/file_reader.ex
+
+defmodule MyFirstApp.FileReader do
+  # Divided the module into two parts, one that reads the file and other that picks the string, to improve testability.
+  def get_strings_to_tweet(filepath) do
+    File.read!(filepath)
+    |> pick_string
+  end
+
+  def pick_string(str) do
+    str
+    |> String.split("\n")
+    |> Enum.map(&String.trim/1)
+    |> Enum.filter(&String.length(&1) <= 140)
+    |> Enum.random()
+  end
+end
+```
+
+    - Tests for File Reader Module
+```elixir
+# test/my_first_app/file_reader_test.exs
+
+defmodule FileReaderTest do
+  use ExUnit.Case
+
+  import MyFirstApp.FileReader
+  test "Passing a file should return a string" do
+    str = get_strings_to_tweet Path.join "#{:code.priv_dir(:my_first_app)}", "Sample.txt"
+
+    assert str != nil
+  end
+
+  test "Will not return a line longer than 140 chars" do
+    str = get_strings_to_tweet Path.join "#{:code.priv_dir(:my_first_app)}", "too_long.txt"
+    IO.puts str
+    assert str == "short line"
+  end
+
+  test "An Empty string should return an empty string" do
+    str = pick_string ""
+
+    assert str == ""
+  end
+end
+```
+
+- **Mocking out File Reader**
+    - By Default, `ExUnit` doesn't have mocking ability baked in.
+    - Mocking allows us to intercept calls to a specific module and redirect them to a function we wrote for testing.
+    - You can use [**Mock Library**](https://hex.pm/packages/mock) to perform mocking.
+    - `with_mock` is the main mocking function in Mock Library.
+    - You can use [**Mix Test Watch Library**](https://hex.pm/packages/mix_test_watch) to automatically run tests when the some file changes occur. Command for that is `mix test.watch`
+    - Example mocking the File Module
+```elixir
+test "The string returned should be trimmed" do
+  with_mock File, [read!: fn(_) -> " ABC " end] do
+    str = get_strings_to_tweet "doesnt_exist.txt"
+
+    assert str == "ABC"
+  end
+end
+```
+
+- **DocTest**
+    - A way of putting basic module tests in the docstrings of the module.
+    - docstrings start with `@doc """` and end with `"""`
+    - You can write doctest by writing the call to the function after `iex> ` and expected value in the next line.
+    - To run doctest write `doctest MODULE` in the test file.
+
+```elixir
+# lib/my_first_app/file_reader.ex
+
+defmodule MyFirstApp.FileReader do
+
+  @doc """
+  This Function will take the path to a file and return a string that can be
+  tweeted out
+
+  The Following is a DocTest
+
+  iex> MyFirstApp.FileReader.get_strings_to_tweet "priv/doc.txt"
+  "ABC"
+  """
+
+
+  def get_strings_to_tweet(filepath) do
+    #...
+  end
+  #...
+end
+```
+
+## Next Steps
+
+- **Reference**
+    - [Elixir Syntax Crash Course](http://elixir-lang.org/crash-course.html)
+    - [Elixir Guides](http://elixir-lang.org/getting-started/introduction.html)
+    - [Elixir Official Docs](https://hexdocs.pm/elixir/)
+    - [Elixir Quick Reference](https://github.com/itsgreggreg/elixir_quick_reference)
+
+- **Learning More of Elixir**
+    - [Elixir Style Guide](https://github.com/christopheradams/elixir_style_guide)
+    - [Elixir School](https://elixirschool.com/)
+    - [Exercism.io Elixir Problems](http://exercism.io/languages/elixir/about)
+
+- **Tools**
+    - [Credo - Static Code Analysis tool](https://github.com/rrrene/credo) - like linters in other languages.
+- **Resources**
+    - [Elixir Status](https://elixirstatus.com/) - posts/blogs and other content related to elixir.
+    - \#myelixirstatus on twitter.
+    - [Elixir Fountain Podcast](https://soundcloud.com/elixirfountain)
+    - [Elixir Conf 2016](https://www.youtube.com/watch?v=_O-bLuVhcCA&list=PLE7tQUdRKcyYoiEKWny0Jj72iu564bVFD)
