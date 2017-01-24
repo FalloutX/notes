@@ -198,6 +198,8 @@
         
             <li><a href="#testing-elixir">Testing Elixir</a></li>
         
+            <li><a href="#next-steps">Next Steps</a></li>
+        
     
     </ul>
 </div></div>
@@ -206,7 +208,7 @@
 <div id="main-content-container">
 <h1 id="getting-started-with-elixir"><a name="user-content-getting-started-with-elixir" href="#getting-started-with-elixir" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Getting Started with Elixir</h1>
 <blockquote>
-<p>Updated 23rd Janaury 2017.</p>
+<p>Updated 25th Janaury 2017.</p>
 </blockquote>
 <h2 id="elixir-data-types"><a name="user-content-elixir-data-types" href="#elixir-data-types" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Elixir Data Types.</h2>
 <ul>
@@ -738,6 +740,164 @@ end
 </code></pre>
 
 <h2 id="testing-elixir"><a name="user-content-testing-elixir" href="#testing-elixir" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Testing Elixir</h2>
+<ul>
+<li><code>mix test</code> to run the tests</li>
+<li><code>mix test FILEPATH</code> to run the tests located at the <code>FILEPATH</code>.</li>
+<li><code>mix test --only TAGNAME</code> to run the test tagged <code>TAGNAME</code>.</li>
+</ul>
+<pre><code class="elixir"># Tagging a test
+@tag watching: true
+test &quot;this test will fail&quot; do
+  assert 2 + 3 == 5
+end
+</code></pre>
+
+<ul>
+<li>
+<p><strong>ExUnit</strong></p>
+<ul>
+<li><code>use ExUnit.Case</code> needs to be in every Test Module.</li>
+<li>Try to mimick directory structure of the app in the tests folder.</li>
+</ul>
+</li>
+<li>
+<p><strong>Testing File Reader Module</strong></p>
+<ul>
+<li>
+<p>Updated File Reader Module
+<pre><code class="elixir"># lib/my_first_app/file_reader.ex
+
+defmodule MyFirstApp.FileReader do
+  # Divided the module into two parts, one that reads the file and other that picks the string, to improve testability.
+  def get_strings_to_tweet(filepath) do
+    File.read!(filepath)
+    |&gt; pick_string
+  end
+
+  def pick_string(str) do
+    str
+    |&gt; String.split(&quot;\n&quot;)
+    |&gt; Enum.map(&amp;String.trim/1)
+    |&gt; Enum.filter(&amp;String.length(&amp;1) &lt;= 140)
+    |&gt; Enum.random()
+  end
+end
+</code></pre></p>
+</li>
+<li>
+<p>Tests for File Reader Module
+<pre><code class="elixir"># test/my_first_app/file_reader_test.exs
+
+defmodule FileReaderTest do
+  use ExUnit.Case
+
+  import MyFirstApp.FileReader
+  test &quot;Passing a file should return a string&quot; do
+    str = get_strings_to_tweet Path.join &quot;#{:code.priv_dir(:my_first_app)}&quot;, &quot;Sample.txt&quot;
+
+    assert str != nil
+  end
+
+  test &quot;Will not return a line longer than 140 chars&quot; do
+    str = get_strings_to_tweet Path.join &quot;#{:code.priv_dir(:my_first_app)}&quot;, &quot;too_long.txt&quot;
+    IO.puts str
+    assert str == &quot;short line&quot;
+  end
+
+  test &quot;An Empty string should return an empty string&quot; do
+    str = pick_string &quot;&quot;
+
+    assert str == &quot;&quot;
+  end
+end
+</code></pre></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Mocking out File Reader</strong></p>
+<ul>
+<li>By Default, <code>ExUnit</code> doesn't have mocking ability baked in.</li>
+<li>Mocking allows us to intercept calls to a specific module and redirect them to a function we wrote for testing.</li>
+<li>You can use <a href="https://hex.pm/packages/mock"><strong>Mock Library</strong></a> to perform mocking.</li>
+<li><code>with_mock</code> is the main mocking function in Mock Library.</li>
+<li>You can use <a href="https://hex.pm/packages/mix_test_watch"><strong>Mix Test Watch Library</strong></a> to automatically run tests when the some file changes occur. Command for that is <code>mix test.watch</code></li>
+<li>Example mocking the File Module
+<pre><code class="elixir">test &quot;The string returned should be trimmed&quot; do
+  with_mock File, [read!: fn(_) -&gt; &quot; ABC &quot; end] do
+    str = get_strings_to_tweet &quot;doesnt_exist.txt&quot;
+
+    assert str == &quot;ABC&quot;
+  end
+end
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p><strong>DocTest</strong></p>
+<ul>
+<li>A way of putting basic module tests in the docstrings of the module.</li>
+<li>docstrings start with <code>@doc """</code> and end with <code>"""</code></li>
+<li>You can write doctest by writing the call to the function after <code>iex&gt;</code> and expected value in the next line.</li>
+<li>To run doctest write <code>doctest MODULE</code> in the test file.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="elixir"># lib/my_first_app/file_reader.ex
+
+defmodule MyFirstApp.FileReader do
+
+  @doc &quot;&quot;&quot;
+  This Function will take the path to a file and return a string that can be
+  tweeted out
+
+  The Following is a DocTest
+
+  iex&gt; MyFirstApp.FileReader.get_strings_to_tweet &quot;priv/doc.txt&quot;
+  &quot;ABC&quot;
+  &quot;&quot;&quot;
+
+
+  def get_strings_to_tweet(filepath) do
+    #...
+  end
+  #...
+end
+</code></pre>
+
+<h2 id="next-steps"><a name="user-content-next-steps" href="#next-steps" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Next Steps</h2>
+<ul>
+<li>
+<p><strong>Reference</strong></p>
+<ul>
+<li><a href="http://elixir-lang.org/crash-course.html">Elixir Syntax Crash Course</a></li>
+<li><a href="http://elixir-lang.org/getting-started/introduction.html">Elixir Guides</a></li>
+<li><a href="https://hexdocs.pm/elixir/">Elixir Official Docs</a></li>
+<li><a href="https://github.com/itsgreggreg/elixir_quick_reference">Elixir Quick Reference</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Learning More of Elixir</strong></p>
+<ul>
+<li><a href="https://github.com/christopheradams/elixir_style_guide">Elixir Style Guide</a></li>
+<li><a href="https://elixirschool.com/">Elixir School</a></li>
+<li><a href="http://exercism.io/languages/elixir/about">Exercism.io Elixir Problems</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Tools</strong></p>
+<ul>
+<li><a href="https://github.com/rrrene/credo">Credo - Static Code Analysis tool</a> - like linters in other languages.</li>
+</ul>
+</li>
+<li><strong>Resources</strong><ul>
+<li><a href="https://elixirstatus.com/">Elixir Status</a> - posts/blogs and other content related to elixir.</li>
+<li>#myelixirstatus on twitter.</li>
+<li><a href="https://soundcloud.com/elixirfountain">Elixir Fountain Podcast</a></li>
+<li><a href="https://www.youtube.com/watch?v=_O-bLuVhcCA&amp;list=PLE7tQUdRKcyYoiEKWny0Jj72iu564bVFD">Elixir Conf 2016</a></li>
+</ul>
+</li>
+</ul>
 </div>
 
 <div id="progress-bar"></div></div>

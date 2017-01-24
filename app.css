@@ -52,7 +52,7 @@ blockquote p {
   height: 4px;
   position: fixed;
   top: 60px;
-  width: 60%;
+  width: 0%;
   box-shadow: 3px 0px 1px 0px #2378cc;
   background-color: dodgerblue;
   opacity: 1;

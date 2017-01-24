@@ -1,5 +1,11 @@
 /* Search */
 
+
+$( document ).ready(function() {
+  $("#progress-bar").width(0 + "%");
+})
+
+
 function getSearchTerm()
 {
     var sPageURL = window.location.search.substring(1);
@@ -33,9 +39,6 @@ $( document ).ready(function() {
     $('table').addClass('table table-striped table-hover');
 });
 
-$( document ).ready(function() {
-  $("#progress-bar").width(0 + "%");
-})
 
 $('body').scrollspy({
     target: '.bs-sidebar',
