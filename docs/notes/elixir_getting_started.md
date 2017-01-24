@@ -578,8 +578,12 @@ end
 
 - **Tools**
     - [Credo - Static Code Analysis tool](https://github.com/rrrene/credo) - like linters in other languages.
+
 - **Resources**
     - [Elixir Status](https://elixirstatus.com/) - posts/blogs and other content related to elixir.
     - \#myelixirstatus on twitter.
     - [Elixir Fountain Podcast](https://soundcloud.com/elixirfountain)
     - [Elixir Conf 2016](https://www.youtube.com/watch?v=_O-bLuVhcCA&list=PLE7tQUdRKcyYoiEKWny0Jj72iu564bVFD)
+
+- **Explanations**
+    - [Why are there two kinds of functions in Elixir?](http://stackoverflow.com/questions/18011784/why-are-there-two-kinds-of-functions-in-elixir)
