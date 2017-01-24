@@ -33,6 +33,9 @@ $( document ).ready(function() {
     $('table').addClass('table table-striped table-hover');
 });
 
+$( document ).ready(function() {
+  $("#progress-bar").width(0 + "%");
+})
 
 $('body').scrollspy({
     target: '.bs-sidebar',
@@ -50,4 +53,8 @@ $("li.disabled a").click(function() {
 });
 
 
-
+$(window).scroll(function() {
+    var progress = ($(window).scrollTop() / ($(document).height() - $(window).height()))*100;
+    console.log("progress", progress + "%");
+    $("#progress-bar").width(progress + "%")
+});

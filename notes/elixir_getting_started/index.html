@@ -188,13 +188,22 @@
         
             <li><a href="#modules-functions">Modules &amp; Functions</a></li>
         
-            <li><a href="#control-flow">Control Flow</a></li>
+            <li><a href="#control-flow-in-elixir">Control Flow in Elixir</a></li>
+        
+            <li><a href="#recursion-in-elixir">Recursion in Elixir</a></li>
+        
+            <li><a href="#elixir-ecosystem">Elixir Ecosystem.</a></li>
+        
+            <li><a href="#creating-an-application">Creating an Application.</a></li>
+        
+            <li><a href="#testing-elixir">Testing Elixir</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
+<div id="main-content-container">
 <h1 id="getting-started-with-elixir"><a name="user-content-getting-started-with-elixir" href="#getting-started-with-elixir" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Getting Started with Elixir</h1>
 <blockquote>
 <p>Updated 23rd Janaury 2017.</p>
@@ -403,17 +412,341 @@ Enum.reduce(list, 0, &amp;(&amp;1 + &amp;2))
 </ul>
 </li>
 </ul>
-<h2 id="control-flow"><a name="user-content-control-flow" href="#control-flow" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Control Flow</h2>
+<h2 id="control-flow-in-elixir"><a name="user-content-control-flow-in-elixir" href="#control-flow-in-elixir" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Control Flow in Elixir</h2>
 <ul>
-<li>Branching logic: if, cond, case.</li>
-<li>Iterating logic: recursion, no loops.</li>
-</ul></div>
+<li>
+<p>Branching logic: if-else, cond, case.</p>
+</li>
+<li>
+<p>Iterating logic: recursion, no loops.</p>
+</li>
+<li>
+<p><strong>If-Else</strong></p>
+<pre><code class="elixir">## first functon with If Else
+
+def firstIF(list) do
+    if length(list) == 0 do
+        nil
+    else
+        hd(list)
+    end
+end
+</code></pre>
+
+</li>
+<li>
+<p><strong>Unless</strong> - for the negative condtion instead of If.</p>
+<pre><code class="elixir">def firstUnless(list) do
+    unless length(list) == 0 do
+        hd(list)
+  end
+end
+</code></pre>
+
+<ul>
+<li><code>quote EXP</code> prints out the Abstract syntax tree for evaluating the EXP.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cond</strong> macro</p>
+<pre><code>```elixir
+#Getting Day Abbreviation using the cond macro.
+def day_abbreviation(day) do
+    cond do
+        day == :Monday -&gt; "M"
+        day == :Tuesday -&gt; "Tu"
+        day == :Wednesday -&gt; "W"
+        day == :Thursday -&gt; "Th"
+        day == :Friday -&gt; "F"
+        day == :Saturday -&gt; "Sa"
+        day == :Sunday -&gt; "Su"
+        true -&gt; "Invalid Day"
+    end
+end
+```
+</code></pre>
+</li>
+<li>
+<p><strong>Case</strong></p>
+<ul>
+<li>Case statements are really useful combined with Pattern Matching capabilities of Elixir.</li>
+<li>You can also combine Gaurd Clauses with case statements for narrowing down cases.</li>
+</ul>
+<pre><code class="elixir">def describe_date(date) do
+    case date do
+        {1, _, _} -&gt; &quot;Brand New Month!&quot;
+        {25, 12, _} -&gt; &quot;Merry Christmas&quot;
+        {25, month, _} -&gt; &quot;Only #{12-month} months until Christmas!&quot;
+        {31, 10, _} -&gt; &quot;Happy Halloween&quot;
+        {_, _ , _} -&gt; &quot;Just an average day!&quot;
+    end
+end
+</code></pre>
+
+</li>
+</ul>
+<h2 id="recursion-in-elixir"><a name="user-content-recursion-in-elixir" href="#recursion-in-elixir" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Recursion in Elixir</h2>
+<blockquote>
+<p>To understand what recursion is, you must first understand recursion.</p>
+</blockquote>
+<ul>
+<li>Writing a map function with Recursion.</li>
+</ul>
+<pre><code class="elixir">def map([], _), do: []
+def map([head | tail], f) do
+    [f.(head) | map(tail, f)]
+end
+</code></pre>
+
+<ul>
+<li>
+<p><strong>Tail Recursion</strong></p>
+<ul>
+<li>only happens when the last operation a function performs is recursion.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="elixir"># tail_map written with tail recursion instead of Recursion.
+# also need reverse method to reverse the result.
+
+def reverse(list), do: reverse(list, [])
+def reverse([], reversed), do: reversed
+def reverse([hd | tl], reversed), do: reverse(tl, [hd | reversed])
+
+
+def tail_map([hd | tl], f), do: tail_map(tl, f, [f.(hd)])
+def tail_map([], _, result), do: reverse(result)
+def tail_map([hd | tl], f, result), do: tail_map(tl, f, [f.(hd) | result]
+</code></pre>
+
+<h2 id="elixir-ecosystem"><a name="user-content-elixir-ecosystem" href="#elixir-ecosystem" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Elixir Ecosystem.</h2>
+<ul>
+<li>
+<p><strong>Basics</strong>: Mix - Build Tool &amp; Hex - Package Manager.</p>
+</li>
+<li>
+<p><strong>Mix</strong> - Task Runner, Build Tool for Elixir.</p>
+<ul>
+<li><a href="https://elixirschool.com/lessons/basics/mix/">Mix | Elixir School</a></li>
+<li><a href="http://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html">Introduction to Mix</a></li>
+<li><code>mix help</code> to list all the mix commands.</li>
+<li><code>mix local.hex</code> to install hex - package manager.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>mix new</code></strong></p>
+<ul>
+<li>for scaffolding a new elixir application.</li>
+<li><code>mix new app_name --sup</code> creates a new elixir application named <code>app_name</code> w/ supervisor. <code>app_name</code> needs to be in snake_case.</li>
+</ul>
+</li>
+<li>
+<p><strong>Supervisors &amp; Umbrellas</strong></p>
+<ul>
+<li><strong>Supervisor</strong> process is only responsible for supervising other processes in the application and restart them if they crash.</li>
+<li><strong>Umbrella</strong> project is the one which has other elixir projects underneath it. A Grouping of similar elixir apps bundled into a single project.</li>
+</ul>
+</li>
+<li>
+<p><strong>Hex</strong> - <a href="https://hex.pm/">Website</a></p>
+<ul>
+<li>The package manager for Elixir Ecosystem.</li>
+<li><code>mix.exs</code> files's <code>deps</code> function contains the dependencies list.</li>
+<li><code>mix deps.get</code> to fetch and install the dependencies.</li>
+</ul>
+</li>
+</ul>
+<h2 id="creating-an-application"><a name="user-content-creating-an-application" href="#creating-an-application" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating an Application.</h2>
+<ul>
+<li>
+<p><strong>Project Structure</strong></p>
+<ul>
+<li><code>mix.exs</code> - <code>project</code> function contains config of the project like elixir version, project version, dependencies etc. <code>application</code> function contains the other applications that need to be started for our application to get started.</li>
+<li><code>lib</code> folder contains our application code as well as our application module.</li>
+<li><code>config</code> folder holds files that are used for config properties.</li>
+<li><code>deps</code> folder is where dependencies get installed.</li>
+<li><code>test</code> is the conventional folder for your tests.</li>
+</ul>
+</li>
+<li>
+<p><strong>A Short Description of the Application</strong></p>
+<ul>
+<li>This Application will read lines from a file, choose a random line and send that line as a tweet.</li>
+</ul>
+</li>
+<li>
+<p><strong>FileReader Module</strong>
+<pre><code class="elixir">
+# This Reads a file, and returns a random line from the file.
+defmodule MyFirstApp.FileReader do
+    def get_strings_to_tweet(filepath) do
+        File.read!(filepath)
+        |&gt; String.split(&quot;\n&quot;)
+        |&gt; Enum.map(&amp;String.trim/1)
+        |&gt; Enum.filter(&amp;String.length(&amp;1) &lt;= 140)
+        |&gt; Enum.random()
+    end
+end
+
+</code></pre></p>
+</li>
+<li>
+<p><strong>Tweet Module</strong></p>
+</li>
+</ul>
+<pre><code class="elixir">defmodule MyFirstApp.Tweet do
+    def send(str) do
+        # Configure the Extwitter Module for accessing twitter.
+        ExTwitter.configure(:process, [
+            consumer_key: System.get_env(&quot;ELIXIR_APPS_TWITTER_CONSUMER_KEY&quot;),
+            consumer_secret: System.get_env(&quot;ELIXIR_APPS_TWITTER_CONSUMER_SECRET&quot;),
+            access_token: System.get_env(&quot;ELIXIR_APPS_TWITTER_ACCESS_TOKEN&quot;),
+            access_token_secret: System.get_env(&quot;ELIXIR_APPS_TWITTER_ACCESS_SECRET&quot;)
+            ])
+        # Send tweet.
+        ExTwitter.update(str)
+    end
+
+    def send_random(file) do
+        # this would send a random line from a file as a tweet.
+        MyFirstApp.FileReader.get_strings_to_tweet(file) |&gt; send
+    end
+end
+</code></pre>
+
+<ul>
+<li>
+<p><strong>Behaviours</strong></p>
+<ul>
+<li>Defines a set of functions to be implemented.</li>
+<li>Ensure that a module implements ALL functions in that set.</li>
+<li>More like Interfaces in traditional OO languages.</li>
+</ul>
+</li>
+<li>
+<p><strong>Creating a Tweet Server</strong></p>
+<ul>
+<li>Using GenServer, which is a behaviour in Elixir.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="elixir">
+defmodule MyFirstApp.TweetServer do
+  use GenServer # GenServers are behaviours in Elixir
+
+  def start_link() do
+    # hardcoding the name of the server
+    # start_link will call init.
+    GenServer.start_link(__MODULE__, :ok, name: :tweet_server)
+  end
+
+  def init(:ok) do
+    {:ok, %{}}
+  end
+
+  def handle_cast({:tweet, tweet}, _) do
+    # Async
+    # handle_call is sync.
+    MyFirstApp.Tweet.send(tweet)
+    {:noreply, %{}}
+  end
+
+  def tweet(tweet) do
+    # This will call handle_cast above
+    GenServer.cast(:tweet_server, {:tweet, tweet})
+  end
+
+end
+
+</code></pre>
+
+<ul>
+<li>
+<p><strong>Adding Tweet Server in Supervision Tree</strong></p>
+<ul>
+<li>
+<p>Add TweetServer in the supervision children list in <code>start</code> function of the application.ex</p>
+</li>
+<li>
+<p><strong>File</strong>: lib/my_first_app/application.ex</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="elixir">def start(_type, _args) do
+  import Supervisor.Spec, warn: false
+
+
+  children = [
+    worker(MyFirstApp.TweetServer, []) # Adding TweetServer in the supervision tree.
+  ]
+
+  opts = [strategy: :one_for_one, name: MyFirstApp.Supervisor]
+  Supervisor.start_link(children, opts)
+end
+</code></pre>
+
+<ul>
+<li>
+<p><strong>TweetServer processes</strong></p>
+<ul>
+<li><code>Process.whereis(:tweet_server)</code> to get the process ID of the tweet_server. This is not a OS process ID, but elixir process ID.</li>
+<li><code>Process.whereis(:tweet_server) |&gt; Process.exit(:kill)</code> to kill the tweet server.</li>
+<li>But since tweet server is in the Supervision tree, it'll be started again after we killed it.</li>
+</ul>
+</li>
+<li>
+<p><strong>Schedule Sending Tweets</strong></p>
+</li>
+</ul>
+<pre><code class="elixir">defmodule MyFirstApp.Scheduler do
+  def schedule_file(schedule, file) do
+    Quantum.add_job(schedule, fn -&gt; MyFirstApp.FileReader.get_strings_to_tweet(file)
+    |&gt; MyFirstApp.TweetServer.tweet end)
+  end
+
+end
+</code></pre>
+
+<ul>
+<li>
+<p><strong>Adding Scheduler to the start of the applicaiton</strong></p>
+<ul>
+<li>modifying the <code>start</code> function in the <code>application.exs</code> file.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="elixir">
+def start(_type, _args) do
+  import Supervisor.Spec, warn: false
+
+  # Define workers and child supervisors to be supervised
+  children = [
+    # Starts a worker by calling: MyFirstApp.Worker.start_link(arg1, arg2, arg3)
+    worker(MyFirstApp.TweetServer, [])
+  ]
+
+  # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
+  # for other strategies and supported options
+  opts = [strategy: :one_for_one, name: MyFirstApp.Supervisor]
+  process = Supervisor.start_link(children, opts)
+  MyFirstApp.Scheduler.schedule_file(&quot;*/5 * * * *&quot;,
+  Path.join(&quot;#{:code.priv_dir(:my_first_app)}&quot;, &quot;Sample.txt&quot;))
+
+  process
+end
+</code></pre>
+
+<h2 id="testing-elixir"><a name="user-content-testing-elixir" href="#testing-elixir" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Testing Elixir</h2>
+</div>
+
+<div id="progress-bar"></div></div>
         </div>
 
         <footer class="col-md-12">
             <hr>
             
-            <center>This site built with <a href="http://www.mkdocs.org/"> MkDocs</a>.</center>
+            <center>This site is built with <a href="http://www.mkdocs.org/"> MkDocs</a>.</center>
         </footer>
 
         <script src="../../js/jquery-1.10.2.min.js"></script>
