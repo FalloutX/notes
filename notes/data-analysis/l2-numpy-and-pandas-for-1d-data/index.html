@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+	<title>L2: Numpy and Pandas for 1D Data - FalloutX Notes</title>
+
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link href="../../../app.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../../..">FalloutX Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+              
+                
+                    <li  >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+              
+            
+              
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../elixir_getting_started/">Elixir Getting Started</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../pwa_notes/">Progressive Web Apps</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../datavis_notes/">Data Visualization</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../redux_notes/">Redux</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ruby</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../ruby/ruby_part_1_codeacademy/">Ruby Notes P1 - CodeAcademy</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../ruby/ruby_part_2_explanations/">Ruby Notes P2 - Explantions</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../ruby/ruby_part_3_ruby_monk_intro/">Ruby Notes P3 - Ruby Monk</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../ruby/ruby_part_4/">Ruby Notes P4 - Ruby Monk Primer Ascent</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Data Analysis</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../l1-data-analysis-process/">L1: Data Analysis Process</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">L2: Numpy and Pandas for 1D Data</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+              
+            
+              
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../../resources/learning_ruby/">Learning Ruby</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../../resources/general_dev_resources/">General Dev Resources</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+              
+            
+              
+            
+              
+            
+              
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <!-- <li >
+                    <a rel="next" href="../l1-data-analysis-process/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../../../resources/learning_ruby/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li> -->
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#lesson-2-numpy-pandas-for-1-d-data">Lesson 2: Numpy &amp; Pandas for 1-D data</a></li>
+        
+            <li><a href="#1-d-data-structures">1-D Data Structures</a></li>
+        
+            <li><a href="#dataset-questions-phase">Dataset &amp; Questions Phase</a></li>
+        
+            <li><a href="#numpy-arrays-vs-python-lists">Numpy Arrays vs Python Lists</a></li>
+        
+            <li><a href="#vectorized-operations">Vectorized Operations</a></li>
+        
+            <li><a href="#standardizing-the-data">Standardizing the Data</a></li>
+        
+            <li><a href="#numpy-index-arrays">Numpy Index Arrays</a></li>
+        
+            <li><a href="#vs-in-numpy-arrays">+ vs += in Numpy Arrays.</a></li>
+        
+            <li><a href="#pandas-series">Pandas Series</a></li>
+        
+            <li><a href="#vectorized-operations-w-series-indexes">Vectorized Operations w/ Series Indexes.</a></li>
+        
+            <li><a href="#fixing-missing-values">Fixing Missing Values</a></li>
+        
+            <li><a href="#non-built-in-calculations">Non Built-In Calculations</a></li>
+        
+            <li><a href="#plotting-with-pandas">Plotting with Pandas</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<div id="main-content-container">
+<h1 id="lesson-2-numpy-pandas-for-1-d-data"><a name="user-content-lesson-2-numpy-pandas-for-1-d-data" href="#lesson-2-numpy-pandas-for-1-d-data" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Lesson 2: Numpy &amp; Pandas for 1-D data</h1>
+<blockquote>
+<p>Based Udacity's UD170 Introduction to Data Analysis. Last Updated 7th Feb 2017.</p>
+</blockquote>
+<h2 id="1-d-data-structures"><a name="user-content-1-d-data-structures" href="#1-d-data-structures" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1-D Data Structures</h2>
+<p>Python has simple lists as 1-D Data Structure. Numpy has 1D Array and Pandas have Series.</p>
+<p><strong>Numpy Arrays</strong>: Simpler to Use than Pandas Series. Way Better Performance than simple lists.</p>
+<p><strong>Pandas Series</strong>: More Features as compare to both simple lists &amp; Numpy Arrays. Built on Top of Numpy Arrays.</p>
+<p><strong>Pandas</strong> also comes with a lot of utility functions for data analysis such as reading a csv, finding all uniques. Its even makes data manipulation faster.</p>
+<h2 id="dataset-questions-phase"><a name="user-content-dataset-questions-phase" href="#dataset-questions-phase" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Dataset &amp; Questions Phase</h2>
+<p>Dataset for this lesson: Gapminder Countries Data. <a href="../data_files/table_descriptions_gapminder.txt">Data Descriptions</a></p>
+<ol>
+<li><a href="../data_files/employment_above_15.csv">Employment Above 15</a></li>
+<li><a href="../data_files/life_expectancy.csv">Life Expectancy</a></li>
+<li><a href="../data_files/gdp_per_capita.csv">GDP Per Capita</a></li>
+<li>School Completion Rates for <a href="../data_files/female_completion_rate.csv">Females</a> and <a href="../data_files/male_completion_rate">Males</a>.</li>
+</ol>
+<p><strong>Questions</strong></p>
+<ol>
+<li>How has employment in the US[Or any other Country] varied over time?</li>
+<li>What are the highest and lowest Employment Rates in the US[Or any other Country]?</li>
+</ol>
+<h2 id="numpy-arrays-vs-python-lists"><a name="user-content-numpy-arrays-vs-python-lists" href="#numpy-arrays-vs-python-lists" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Numpy Arrays vs Python Lists</h2>
+<table>
+<thead>
+<tr>
+<th>Similarities</th>
+<th>Differences</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access Elements by Position: <code>A[1]</code></td>
+<td>In Numpy Arrays, Each Element should be of same type</td>
+</tr>
+<tr>
+<td>Access a Range of Elements: <code>A[1:4]</code></td>
+<td>Convenient functions eg. std, mean built in for Numpy Arrays</td>
+</tr>
+<tr>
+<td>Usage of loop to iterate.</td>
+<td>Numpy Arrays can be multi-dimensional</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="python"># First Import Pandas and numpy
+import pandas as pd
+import numpy as np
+
+</code></pre>
+
+<pre><code class="python"># Reading a csv with pandas
+daily_engagement = pd.read_csv('data_files/daily_engagement.csv')
+
+# Find the uniques based on account_key column
+unique_students = daily_engagement['acct'].unique()
+
+len(unique_students)
+</code></pre>
+
+<p><strong>OUTPUT</strong></p>
+<pre><code>1237
+</code></pre>
+<h2 id="vectorized-operations"><a name="user-content-vectorized-operations" href="#vectorized-operations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Vectorized Operations</h2>
+<p><strong>Vector</strong>: List of numbers/values.</p>
+<p><strong>Vector Addition</strong>: Add corresponding elements of each input vector</p>
+<p>eg. <code>[1, 2, 4] + [5, 6, 8]</code> =&gt; <code>[6, 8, 12]</code></p>
+<p><strong>Multiplication By A Scalar</strong>: Each Element is multiplied by the scalar individually.</p>
+<p>eg <code>[1, 3, 6] * 3</code> =&gt; <code>[3, 9, 18]</code></p>
+<h4 id="more-vectorized-operations"><a name="user-content-more-vectorized-operations" href="#more-vectorized-operations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>More Vectorized Operations:</h4>
+<table>
+<thead>
+<tr>
+<th>Math Operations</th>
+<th>Logical Operations</th>
+<th>Comparision Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vector Addition: <code>+</code></td>
+<td>Logical AND: <code>&amp;</code></td>
+<td><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code></td>
+</tr>
+<tr>
+<td>Subtract: <code>-</code></td>
+<td>OR: same as python</td>
+<td>Equality: <code>==</code>, <code>!=</code></td>
+</tr>
+<tr>
+<td>Multiply: <code>*</code></td>
+<td>NOT <code>~</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Divide: <code>/</code></td>
+<td><strong>Read Note 1</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Exponentiate: <code>**</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note 1</strong>: Make Sure you have boolean arrays for Logical Operations, otherwise Bitwise Operations will occur, which may not be what you want. Symbol for logical OR is <code>||</code>.</p>
+<h2 id="standardizing-the-data"><a name="user-content-standardizing-the-data" href="#standardizing-the-data" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Standardizing the Data</h2>
+<p><strong>Why Standardize?</strong>: To find out how does one data point compare to the rest of the Data points in the data set.</p>
+<p><strong>Standardizing</strong>: Convert each point to a number of standard deviations away from the mean.</p>
+<p>For a Dataset X, with mean 𝓾 and standard deviation σ, then for a data point x<sub>i</sub>, the standardized value would be.</p>
+<p>x<sub>i<sub>new</sub></sub> = (x<sub>i</sub> - 𝓾) / σ</p>
+<p>Links:</p>
+<ul>
+<li>
+<p><a href="http://stats.stackexchange.com/questions/10289/whats-the-difference-between-normalization-and-standardization">What's the difference between Normalization and Standardization? | Stack Exchange</a></p>
+</li>
+<li>
+<p><a href="http://www.dataminingblog.com/standardization-vs-normalization/">Standardization vs. normalization</a></p>
+</li>
+</ul>
+<pre><code class="python"># Standardizing the data
+
+countries = np.array([
+    'Afghanistan', 'Albania', 'Algeria', 'Angola', 'Argentina',
+    'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas',
+    'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium',
+    'Belize', 'Benin', 'Bhutan', 'Bolivia',
+    'Bosnia and Herzegovina'
+])
+
+
+employment = np.array([
+    55.70000076,  51.40000153,  50.5       ,  75.69999695,
+    58.40000153,  40.09999847,  61.5       ,  57.09999847,
+    60.90000153,  66.59999847,  60.40000153,  68.09999847,
+    66.90000153,  53.40000153,  48.59999847,  56.79999924,
+    71.59999847,  58.40000153,  70.40000153,  41.20000076
+])
+
+def standardize_data(values):
+    mean = np.mean(values)
+    std = np.std(values)
+    return (values - mean) / float(std)
+
+standardize_data(employment)
+</code></pre>
+
+<p><strong>OUTPUT</strong></p>
+<pre><code>array([-0.31965231, -0.780123  , -0.87650077,  1.82207181, -0.03051941,
+       -1.99019768,  0.30144772, -0.16973184,  0.23719615,  0.84758731,
+        0.18365304,  1.00821665,  0.87971351, -0.56595055, -1.07996476,
+       -0.20185762,  1.38301845, -0.03051941,  1.2545153 , -1.87240259])
+</code></pre>
+<h2 id="numpy-index-arrays"><a name="user-content-numpy-index-arrays" href="#numpy-index-arrays" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Numpy Index Arrays</h2>
+<p>Eg. Suppose you have two arrays of same length, first one contains data and other one just contains booleans.</p>
+<p>a -&gt; <code>[1, 2, 3, 4, 5]</code></p>
+<p>b -&gt; <code>[T, F, F, T, T]</code> - Index Array</p>
+<p>Then <code>a[b]</code> would be <code>[1, 4, 5]</code> (Keeps the elements whose index is true in the index array)</p>
+<p>To create boolean array you can use comparision operators like <code>a &gt; 2</code></p>
+<p>To find every element in the dataset greater than 2, you can use <code>a[a&gt;2]</code>.</p>
+<h2 id="vs-in-numpy-arrays"><code>+</code> vs <code>+=</code> in Numpy Arrays.</h2>
+<ul>
+<li>
+<p><code>+=</code> will do the Vector Addition <strong>INPLACE</strong>, will change the input array.</p>
+</li>
+<li>
+<p><code>+</code> will return a new array.</p>
+</li>
+<li>
+<p><code>+=</code> operates <strong>INPLACE</strong> while <code>+</code> does not.</p>
+</li>
+<li>
+<p>NON-INPLACE operations should be preferred as they are relatively easier to think about.</p>
+</li>
+</ul>
+<h2 id="pandas-series"><a name="user-content-pandas-series" href="#pandas-series" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Pandas Series</h2>
+<ul>
+<li>
+<p>Very Similar to Numpy Arrays, but Series come will extra functionality</p>
+</li>
+<li>
+<p>for eg. <code>S.describe()</code> prints out mean, max, std, min and some other points of data for the series <code>S</code></p>
+</li>
+</ul>
+<h4 id="similarites-with-numpy-arrays"><a name="user-content-similarites-with-numpy-arrays" href="#similarites-with-numpy-arrays" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Similarites with Numpy Arrays</h4>
+<ul>
+<li>Accessing Elements <code>S[0]</code>, <code>S[1]</code></li>
+<li>Accessing Range of Elements  <code>S[1:4]</code></li>
+<li>Looping: <code>for x in S</code></li>
+<li>Convenient Functions: <code>S.mean()</code>, <code>S.max()</code></li>
+<li>Vectorized Operations: <code>S1 + S2</code></li>
+<li>Implemented on top of Numpy Arrays.</li>
+</ul>
+<h4 id="pandas-series-indexes"><a name="user-content-pandas-series-indexes" href="#pandas-series-indexes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Pandas Series Indexes</h4>
+<p><code>S = pd.Series(data, index=[indexes_array])</code></p>
+<ul>
+<li>
+<p>you can specify index names for each of the positions in the Series.</p>
+</li>
+<li>
+<p>Therefore A Pandas Series is like a cross between a list and a dictionary.</p>
+</li>
+<li>
+<p>The to lookup by index: <code>S.loc(some_index)</code></p>
+</li>
+<li>
+<p><code>S.argmax()</code> would then return the index for the max value.(rather than position)</p>
+</li>
+</ul>
+<pre><code class="python"># Panda Series Practice.
+
+countries = ['Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda',
+             'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan',
+             'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus',
+             'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia']
+
+life_expectancy_values = [74.7,  75. ,  83.4,  57.6,  74.6,  75.4,  72.3,  81.5,  80.2,
+                          70.3,  72.1,  76.4,  68.1,  75.2,  69.8,  79.4,  70.8,  62.7,
+                          67.3,  70.6]
+
+gdp_values = [ 1681.61390973,   2155.48523109,  21495.80508273,    562.98768478,
+              13495.1274663 ,   9388.68852258,   1424.19056199,  24765.54890176,
+              27036.48733192,   1945.63754911,  21721.61840978,  13373.21993972,
+                483.97086804,   9783.98417323,   2253.46411147,  25034.66692293,
+               3680.91642923,    366.04496652,   1175.92638695,   1132.21387981]
+life_expectancy = pd.Series(life_expectancy_values)
+gdp = pd.Series(gdp_values)
+
+def variable_correlation(variable1, variable2):
+    '''
+    Fill in this function to calculate the number of data points for which
+    the directions of variable1 and variable2 relative to the mean are the
+    same, and the number of data points for which they are different.
+    Direction here means whether each value is above or below its mean.
+
+    You can classify cases where the value is equal to the mean for one or
+    both variables however you like.
+
+    Each argument will be a Pandas series.
+
+    For example, if the inputs were pd.Series([1, 2, 3, 4]) and
+    pd.Series([4, 5, 6, 7]), then the output would be (4, 0).
+    This is because 1 and 4 are both below their means, 2 and 5 are both
+    below, 3 and 6 are both above, and 4 and 7 are both above.
+
+    On the other hand, if the inputs were pd.Series([1, 2, 3, 4]) and
+    pd.Series([7, 6, 5, 4]), then the output would be (0, 4).
+    This is because 1 is below its mean but 7 is above its mean, and
+    so on.
+    '''
+    v1mean, v2mean = variable1.mean(), variable2.mean()
+    v1plus, v2plus = variable1 &gt; v1mean, variable2 &gt; v2mean
+    num_same_direction = 0
+    num_different_direction = 0
+
+
+    for i in range(len(v1plus)):
+        dir1, dir2 = v1plus[i], v2plus[i]
+        num_same_direction +=  ( dir1 == dir2 )
+        num_different_direction +=  (dir1 != dir2 )
+
+    return (num_same_direction, num_different_direction)
+
+variable_correlation(life_expectancy, gdp)
+</code></pre>
+
+<p><strong>OUTPUT</strong></p>
+<pre><code>(17, 3)
+</code></pre>
+<h2 id="vectorized-operations-w-series-indexes"><a name="user-content-vectorized-operations-w-series-indexes" href="#vectorized-operations-w-series-indexes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Vectorized Operations w/ Series Indexes.</h2>
+<p>Vectorized Operations with Series Indexes can be thought clearly with these two Rules:</p>
+<ol>
+<li>Order of Indexes does not matter.</li>
+<li>If some Indexes don't overlap, NAN will be the result for that Index.</li>
+</ol>
+<p>Check out the Examples below.</p>
+<p><pre><code class="python">
+
+print &quot;Block 1&quot;
+# Addition when indexes are the same
+if True:
+    s1 = pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])
+    s2 = pd.Series([10, 20, 30, 40], index=['a', 'b', 'c', 'd'])
+    print s1 + s2
+
+
+print &quot;Block 2&quot;
+# Indexes have same elements in a different order
+if True:
+    s1 = pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])
+    s2 = pd.Series([10, 20, 30, 40], index=['b', 'd', 'a', 'c'])
+    print s1 + s2
+
+
+print &quot;Block 3&quot;
+# Indexes overlap, but do not have exactly the same elements
+if True:
+    s1 = pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])
+    s2 = pd.Series([10, 20, 30, 40], index=['c', 'd', 'e', 'f'])
+    print s1 + s2
+
+
+print &quot;Block 4&quot;
+# Indexes do not overlap
+if True:
+    s1 = pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])
+    s2 = pd.Series([10, 20, 30, 40], index=['e', 'f', 'g', 'h'])
+    print s1 + s2
+</code></pre>
+<strong>OUTPUT</strong></p>
+<pre><code>Block 1
+a    11
+b    22
+c    33
+d    44
+dtype: int64
+Block 2
+a    31
+b    12
+c    43
+d    24
+dtype: int64
+Block 3
+a     NaN
+b     NaN
+c    13.0
+d    24.0
+e     NaN
+f     NaN
+dtype: float64
+Block 4
+a   NaN
+b   NaN
+c   NaN
+d   NaN
+e   NaN
+f   NaN
+g   NaN
+h   NaN
+dtype: float64
+</code></pre>
+<h2 id="fixing-missing-values"><a name="user-content-fixing-missing-values" href="#fixing-missing-values" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Fixing Missing Values</h2>
+<ul>
+<li>
+<p>Fix missing values by using (<code>Series.dropna</code>) which will drop any NAN indexes.</p>
+</li>
+<li>
+<p><strong>Better Solution</strong>: Treat missing values as 0 before the addition.</p>
+</li>
+</ul>
+<p>Use <code>S.add()</code> function instead of <code>+</code> operator - <code>S1.add(S2, fill_value=0)</code> - This would convert missing values to 0 before Vector Addition.</p>
+<h2 id="non-built-in-calculations"><a name="user-content-non-built-in-calculations" href="#non-built-in-calculations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Non Built-In Calculations</h2>
+<ul>
+<li>
+<p>Option 1: Treat Series as an Iterator and therefore manipulate it by using loops.</p>
+</li>
+<li>
+<p>Option 2: Use the function <code>Series.apply()</code></p>
+</li>
+<li>
+<p><code>apply</code> takes a series and a function as its arguments and returns a new series where the function is applied to each element individually. Its like <code>map</code> function in Python.</p>
+</li>
+</ul>
+<h2 id="plotting-with-pandas"><a name="user-content-plotting-with-pandas" href="#plotting-with-pandas" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Plotting with Pandas</h2>
+<ul>
+<li>
+<p>You can just use basic matplotlib as with python lists and numpy arrays.</p>
+<ul>
+<li><code>pyplot.hist(data)</code></li>
+</ul>
+</li>
+<li>
+<p>But Pandas comes with built-in plotting that used matplotlib internally.</p>
+</li>
+</ul>
+<p>Eg. If <code>data</code> is a Pandas Series:</p>
+<p><code>data.hist()</code> -&gt; gives out a histogram</p>
+<p><code>data.plot()</code> -&gt; gives out a line plot of the series.</p>
+<pre><code class="python"># Pandas Plotting Excercise. May need to change where the data files are.
+
+import pandas as pd
+import seaborn as sns
+
+# The following code reads all the Gapminder data into Pandas DataFrames. You'll
+# learn about DataFrames next lesson.
+
+path = 'data_files/'
+employment = pd.read_csv(path + 'employment_above_15.csv', index_col='Country')
+female_completion = pd.read_csv(path + 'female_completion_rate.csv', index_col='Country')
+male_completion = pd.read_csv(path + 'male_completion_rate.csv', index_col='Country')
+life_expectancy = pd.read_csv(path + 'life_expectancy.csv', index_col='Country')
+gdp = pd.read_csv(path + 'gdp_per_capita.csv', index_col='Country')
+
+# The following code creates a Pandas Series for each variable for the United States.
+# You can change the string 'United States' to a country of your choice.
+
+employment_us = employment.loc['United States']
+female_completion_us = female_completion.loc['United States']
+male_completion_us = male_completion.loc['United States']
+life_expectancy_us = life_expectancy.loc['United States']
+gdp_us = gdp.loc['United States']
+
+# Uncomment the following line of code to see the available country names
+# print employment.index.values
+# print employment
+
+# Use the Series defined above to create a plot of each variable over time for
+# the country of your choice. You will only be able to display one plot at a time
+# with each &quot;Test Run&quot;.
+%pylab inline
+female_completion_us.plot(title=&quot;% of Female Completetion of Primary School in USA&quot;)
+</code></pre>
+
+<p><strong>OUTPUT</strong></p>
+<pre><code>Populating the interactive namespace from numpy and matplotlib
+</code></pre>
+<p><img alt="png" src="../output_12_3.png" /></p>
+</div>
+
+<div id="progress-bar"></div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>This site is built with <a href="http://www.mkdocs.org/"> MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script>var base_url = '../../..';</script>
+        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+        <script src="../../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
