@@ -14,6 +14,8 @@ pages:
     - 'Ruby Notes P4 - Ruby Monk Primer Ascent': notes/ruby/ruby_part_4.md
   - Data Analysis:
     - 'L1: Data Analysis Process': notes/data-analysis/l1-data-analysis-process.md
+    - 'L2: Numpy and Pandas for 1D Data': notes/data-analysis/l2-numpy-and-pandas-for-1d-data.md
+
 - Resources:
   - 'Learning Ruby': resources/learning_ruby.md
   - 'General Dev Resources': resources/general_dev_resources.md
