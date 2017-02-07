@@ -13,7 +13,11 @@ Question Phase -> Wrangling Phase -> Data Exploration Phase -> Drawing Conclusio
 
 __Data__: Data for this lesson was a Udacity Student Data, such as enrollments, daily engagement and project submissions.
 
-Details about the data can be found here.
+1. [Enrollments Data](data_files/enrollments.csv)
+2. [Daily Engagement Data](data_files/daily_engagement.csv) - Shorter Version
+3. [Project Submissions Data](data_files/project_submissions.csv)
+
+Details about the data can be found [here](data_files/table_descriptions.txt).
 
 1. __Question Phase__:
     - Asking Question about the Data.
