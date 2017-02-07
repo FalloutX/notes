@@ -15,6 +15,8 @@ Data Visualization & D3| [See](notes/datavis_notes.md)
 Progressive Web App Notes|[See](notes/pwa_notes.md)
 Redux Notes|[See](notes/redux_notes.md)  
 Ruby Notes| [See](notes/ruby/index.md)
+Data Analysis Notes| [See](notes/data-analysis/index.md)
+
 
 ### Resources
 Topic | Link   
@@ -22,4 +24,4 @@ Topic | Link
 General Dev Resources | [See](resources/general_dev_resources.md)
 Learning Ruby | [See](resources/learning_ruby.md)
 
-> This page was last updated on 24th Jan 2017.
+> This page was last updated on 7th Feb 2017.

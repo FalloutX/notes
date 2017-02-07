@@ -12,11 +12,14 @@ pages:
     - 'Ruby Notes P2 - Explantions': notes/ruby/ruby_part_2_explanations.md
     - 'Ruby Notes P3 - Ruby Monk': notes/ruby/ruby_part_3_ruby_monk_intro.md
     - 'Ruby Notes P4 - Ruby Monk Primer Ascent': notes/ruby/ruby_part_4.md
+  - Data Analysis:
+    - 'L1: Data Analysis Process': notes/data-analysis/l1-data-analysis-process.md
 - Resources:
   - 'Learning Ruby': resources/learning_ruby.md
   - 'General Dev Resources': resources/general_dev_resources.md
 
 - __ruby_notes_index: notes/ruby/index.md
+- __data_analysis_notes_index: notes/data-analysis/index.md
 
 - __Internal: internal.md
 

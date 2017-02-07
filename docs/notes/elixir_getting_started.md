@@ -25,6 +25,8 @@
 
     - `"Hello, #{'andy'}"` becomes `"Hello, andy"`
 
+    - Keep in mind single-quoted and double-quoted representations are not equivalent in Elixir. Single quotes are char lists, double quotes are strings.
+
 - **Tuples**
 
     - Ordered collections of 2-5 items. for more items, use List/Map.
@@ -33,6 +35,7 @@
     - To change element at 3rd position of the book tuple, `put_elem(book, 2, "Newton Taylor")`
     - `put_elem` doesn't mutate the book tuple. Data is immutable in elixir.
     - `{title, price, author} = book`, matches the book tuple to the left hand side variables title, price and author. If you don't need any of the element from book, you can match it with `_`(underscore).
+    - Tuples store elements contiguously in memory. This means accessing a tuple element by index or getting the tuple size is a fast operation.
 
 - **List**
 
@@ -41,6 +44,7 @@
     - `hd(my_list)` gives the first element (head of the list), and `tl(my_list)` gives the list minus first element(tail of the list).
     - Prepending to the list: `[89 | my_list]`, prepends 89 to the my_list.
     - Patten matching left-side and right-side works in lists.
+    - Two lists can be concatenated or subtracted using the `++/2` and `--/2` operators.
 
 - **Immutablity**
 
@@ -74,6 +78,18 @@
     - `import Kernel, except: [inspect: 1]` will import everything from `Kernel` module except the `inspect` function.
     - `alias ModulePlayground.Misc.Util.Math, as: MyMath` will add `MyMath` alias for rather long name of `ModulePlayground.Misc.Util.Math`. If `as:` option in not provided, it would use the last name of the aliased Module as the alias. For `ModulePlayground.Misc.Util.Math`, the alias without `as:` would be `Math`.
     - `require` is used to bring in Macros from other modules into your module.
+
+- **Basic Operators**
+    - __Arithmetic Operators__: `*`, `+`, `/`, `-`, `div/2`(for integer division) & `rem/2`(remainder)
+    - List Concatenation (`++`) and List Subtraction `--`.
+    - String Concatenation `<>`
+    - __Boolean Operators__(strict): `and`, `or` and `not`. they expect boolean as a first argument.
+    - __Boolean Operators__(non-strict): `&&`, `||` and `!`. don't expect boolean as a first argument. only `false` & `nil` are falsy in Elixir
+    - __Comparision__: `==`, `!=`, `===`, `<=`, `>=`, `>` and `<`.
+    - `===` vs `==`: `===` is more strict when comparing floats and integers. `1 === 1.0` is `false`, while `1 == 1.0` is true.
+    - In Elixir, different data types can be compared. `1 < :atom` is true.
+    - Data Types Sorting Order: `number < atom < reference < function < port < pid < tuple < map < list < bitstring`
+
 
 - **Functions**
 
@@ -150,6 +166,9 @@
 - **Anonymous Functions**
 
     - to define a anonymous function with `fn` syntax
+    - __Note__: a dot (`.`) between the variable and parentheses is required to invoke an anonymous function.
+    - Therefore, Elixir makes a clear distinction between anonymous functions and named functions.
+    - Anonymous functions are closures and as such they can access variables that are in scope when the function is defined
 
     ```elixir
     Enum.map(list, fn(x) -> x*x end)
@@ -168,6 +187,41 @@
 - **Calling the passed function**
 
     - call the pass function `f` with `a` argument as `f.(a)`
+
+- **Pattern Matching**
+    - In Elixir, the `=` operator is actually called the match operator. When the sides of `=` do not match, a MatchError is raised.
+    - Match operator is also useful for destructuring complex data types.
+
+    ```elixir
+    iex> {a, b, c} = {:hello, "world", 42}
+    {:hello, "world", 42}
+    iex> a
+    :hello
+    iex> b
+    "world"
+    ```
+
+    - A list also supports matching on its own head and its tail.
+
+    ```elixir
+    iex> [head | tail] = [1, 2, 3]
+    [1, 2, 3]
+    iex> head
+    1
+    iex> tail
+    [2, 3]
+    iex> [h | t] = []  # head-tail matching won't work for an empty list
+    ** (MatchError) no match of right hand side value: []
+    ```
+    - __Pin operator__ `^` can be use to pattern match against an existing variable’s value rather than rebinding the variable.
+
+    ```elixir
+    iex> x = 1
+    1
+    iex> ^x = 2 # Trying to match 1 = 2, will throw Match Error
+    ** (MatchError) no match of right hand side value: 2
+    ```
+    - __Note__: You cannot make function calls on the left side of a match.
 
 
 ## Control Flow in Elixir
