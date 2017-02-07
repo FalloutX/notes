@@ -121,6 +121,21 @@
   </li>
 
                         
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Data Analysis</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../data-analysis/l1-data-analysis-process/">L1: Data Analysis Process</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
                         </ul>
                     </li>
                 
@@ -147,6 +162,8 @@
                         </ul>
                     </li>
                 
+              
+            
               
             
               
@@ -242,6 +259,9 @@
 <li>
 <p><code>"Hello, #{'andy'}"</code> becomes <code>"Hello, andy"</code></p>
 </li>
+<li>
+<p>Keep in mind single-quoted and double-quoted representations are not equivalent in Elixir. Single quotes are char lists, double quotes are strings.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -253,6 +273,7 @@
 <li>To change element at 3rd position of the book tuple, <code>put_elem(book, 2, "Newton Taylor")</code></li>
 <li><code>put_elem</code> doesn't mutate the book tuple. Data is immutable in elixir.</li>
 <li><code>{title, price, author} = book</code>, matches the book tuple to the left hand side variables title, price and author. If you don't need any of the element from book, you can match it with <code>_</code>(underscore).</li>
+<li>Tuples store elements contiguously in memory. This means accessing a tuple element by index or getting the tuple size is a fast operation.</li>
 </ul>
 </li>
 <li>
@@ -263,6 +284,7 @@
 <li><code>hd(my_list)</code> gives the first element (head of the list), and <code>tl(my_list)</code> gives the list minus first element(tail of the list).</li>
 <li>Prepending to the list: <code>[89 | my_list]</code>, prepends 89 to the my_list.</li>
 <li>Patten matching left-side and right-side works in lists.</li>
+<li>Two lists can be concatenated or subtracted using the <code>++/2</code> and <code>--/2</code> operators.</li>
 </ul>
 </li>
 <li>
@@ -304,6 +326,20 @@ end
 <li><code>import Kernel, except: [inspect: 1]</code> will import everything from <code>Kernel</code> module except the <code>inspect</code> function.</li>
 <li><code>alias ModulePlayground.Misc.Util.Math, as: MyMath</code> will add <code>MyMath</code> alias for rather long name of <code>ModulePlayground.Misc.Util.Math</code>. If <code>as:</code> option in not provided, it would use the last name of the aliased Module as the alias. For <code>ModulePlayground.Misc.Util.Math</code>, the alias without <code>as:</code> would be <code>Math</code>.</li>
 <li><code>require</code> is used to bring in Macros from other modules into your module.</li>
+</ul>
+</li>
+<li>
+<p><strong>Basic Operators</strong></p>
+<ul>
+<li><strong>Arithmetic Operators</strong>: <code>*</code>, <code>+</code>, <code>/</code>, <code>-</code>, <code>div/2</code>(for integer division) &amp; <code>rem/2</code>(remainder)</li>
+<li>List Concatenation (<code>++</code>) and List Subtraction <code>--</code>.</li>
+<li>String Concatenation <code>&lt;&gt;</code></li>
+<li><strong>Boolean Operators</strong>(strict): <code>and</code>, <code>or</code> and <code>not</code>. they expect boolean as a first argument.</li>
+<li><strong>Boolean Operators</strong>(non-strict): <code>&amp;&amp;</code>, <code>||</code> and <code>!</code>. don't expect boolean as a first argument. only <code>false</code> &amp; <code>nil</code> are falsy in Elixir</li>
+<li><strong>Comparision</strong>: <code>==</code>, <code>!=</code>, <code>===</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&gt;</code> and <code>&lt;</code>.</li>
+<li><code>===</code> vs <code>==</code>: <code>===</code> is more strict when comparing floats and integers. <code>1 === 1.0</code> is <code>false</code>, while <code>1 == 1.0</code> is true.</li>
+<li>In Elixir, different data types can be compared. <code>1 &lt; :atom</code> is true.</li>
+<li>Data Types Sorting Order: <code>number &lt; atom &lt; reference &lt; function &lt; port &lt; pid &lt; tuple &lt; map &lt; list &lt; bitstring</code></li>
 </ul>
 </li>
 <li>
@@ -392,6 +428,9 @@ sqaure = &amp;Sample.Utils.sqaure/2
 <p><strong>Anonymous Functions</strong></p>
 <ul>
 <li>to define a anonymous function with <code>fn</code> syntax</li>
+<li><strong>Note</strong>: a dot (<code>.</code>) between the variable and parentheses is required to invoke an anonymous function.</li>
+<li>Therefore, Elixir makes a clear distinction between anonymous functions and named functions.</li>
+<li>Anonymous functions are closures and as such they can access variables that are in scope when the function is defined</li>
 </ul>
 <pre><code class="elixir">Enum.map(list, fn(x) -&gt; x*x end)
 </code></pre>
@@ -412,6 +451,40 @@ Enum.reduce(list, 0, &amp;(&amp;1 + &amp;2))
 <ul>
 <li>call the pass function <code>f</code> with <code>a</code> argument as <code>f.(a)</code></li>
 </ul>
+</li>
+<li>
+<p><strong>Pattern Matching</strong></p>
+<ul>
+<li>In Elixir, the <code>=</code> operator is actually called the match operator. When the sides of <code>=</code> do not match, a MatchError is raised.</li>
+<li>Match operator is also useful for destructuring complex data types.</li>
+</ul>
+<pre><code class="elixir">iex&gt; {a, b, c} = {:hello, &quot;world&quot;, 42}
+{:hello, &quot;world&quot;, 42}
+iex&gt; a
+:hello
+iex&gt; b
+&quot;world&quot;
+</code></pre>
+
+<ul>
+<li>A list also supports matching on its own head and its tail.</li>
+</ul>
+<p><pre><code class="elixir">iex&gt; [head | tail] = [1, 2, 3]
+[1, 2, 3]
+iex&gt; head
+1
+iex&gt; tail
+[2, 3]
+iex&gt; [h | t] = []  # head-tail matching won't work for an empty list
+** (MatchError) no match of right hand side value: []
+</code></pre>
+- <strong>Pin operator</strong> <code>^</code> can be use to pattern match against an existing variable’s value rather than rebinding the variable.</p>
+<p><pre><code class="elixir">iex&gt; x = 1
+1
+iex&gt; ^x = 2 # Trying to match 1 = 2, will throw Match Error
+** (MatchError) no match of right hand side value: 2
+</code></pre>
+- <strong>Note</strong>: You cannot make function calls on the left side of a match.</p>
 </li>
 </ul>
 <h2 id="control-flow-in-elixir"><a name="user-content-control-flow-in-elixir" href="#control-flow-in-elixir" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Control Flow in Elixir</h2>
@@ -890,11 +963,19 @@ end
 <li><a href="https://github.com/rrrene/credo">Credo - Static Code Analysis tool</a> - like linters in other languages.</li>
 </ul>
 </li>
-<li><strong>Resources</strong><ul>
+<li>
+<p><strong>Resources</strong></p>
+<ul>
 <li><a href="https://elixirstatus.com/">Elixir Status</a> - posts/blogs and other content related to elixir.</li>
 <li>#myelixirstatus on twitter.</li>
 <li><a href="https://soundcloud.com/elixirfountain">Elixir Fountain Podcast</a></li>
 <li><a href="https://www.youtube.com/watch?v=_O-bLuVhcCA&amp;list=PLE7tQUdRKcyYoiEKWny0Jj72iu564bVFD">Elixir Conf 2016</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Explanations</strong></p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/18011784/why-are-there-two-kinds-of-functions-in-elixir">Why are there two kinds of functions in Elixir?</a></li>
 </ul>
 </li>
 </ul>

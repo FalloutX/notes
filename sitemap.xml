@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2017-01-25</lastmod>
+     <lastmod>2017-02-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,25 +13,31 @@
         
     <url>
      <loc>None/notes/elixir_getting_started/</loc>
-     <lastmod>2017-01-25</lastmod>
+     <lastmod>2017-02-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/notes/pwa_notes/</loc>
-     <lastmod>2017-01-25</lastmod>
+     <lastmod>2017-02-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/notes/datavis_notes/</loc>
-     <lastmod>2017-01-25</lastmod>
+     <lastmod>2017-02-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/notes/redux_notes/</loc>
-     <lastmod>2017-01-25</lastmod>
+     <lastmod>2017-02-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None</loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -47,13 +53,13 @@
         
     <url>
      <loc>None/resources/learning_ruby/</loc>
-     <lastmod>2017-01-25</lastmod>
+     <lastmod>2017-02-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/resources/general_dev_resources/</loc>
-     <lastmod>2017-01-25</lastmod>
+     <lastmod>2017-02-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -62,7 +68,15 @@
     
     <url>
      <loc>None/notes/ruby/</loc>
-     <lastmod>2017-01-25</lastmod>
+     <lastmod>2017-02-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/notes/data-analysis/</loc>
+     <lastmod>2017-02-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -70,7 +84,7 @@
     
     <url>
      <loc>None/internal/</loc>
-     <lastmod>2017-01-25</lastmod>
+     <lastmod>2017-02-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
